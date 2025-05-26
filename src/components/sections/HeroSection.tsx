@@ -10,12 +10,12 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
   return (
     <div id='hero' className="relative min-h-screen w-full overflow-hidden bg-black">
       
-      {/* Stars animation layer
+      {/* Stars animation layer*/}
       <div className="absolute inset-0 z-4">
         <StarsAnimation />
       </div> */}
       
-      {/* Background image */}
+      {/* Background image 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
