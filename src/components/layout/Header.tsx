@@ -1,15 +1,34 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { TrackingButton } from '../ui/TrackingButton';
+import { useState } from 'react';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // Show header at the top of the page
+    if (latest < 50) {
+      setHidden(false);
+      return;
+    }
+
+    // Hide when scrolling down, show when scrolling up
+    const direction = latest > lastScrollY ? "down" : "up";
+    if (direction === "down" && !hidden) setHidden(true);
+    if (direction === "up" && hidden) setHidden(false);
+    
+    setLastScrollY(latest);
+  });
 
   const handleLogoClick = () => {
     navigate('/');
   };
 
-   const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -17,11 +36,16 @@ export const Header: React.FC = () => {
   };
   
   return (
-    <header className="fixed w-full top-0 z-50 bg-transparent pointer-events-none">
-      <nav className="w-full px-5 py-6 flex items-center justify-between pointer-events-auto">
-        {/* Zona izquierda - Logo */}
+    <motion.header 
+      className="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-sm"
+      initial={false}
+      animate={{ y: hidden ? -100 : 0 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    >
+      <nav className="w-full px-5 py-6 flex items-center justify-between">
+        {/* Logo zone */}
         <motion.div 
-          className="flex items-center space-x-2 cursor-pointer transition-opacity duration-200 pointer-events-auto"
+          className="flex items-center space-x-2 cursor-pointer transition-opacity duration-200"
           onClick={handleLogoClick}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,19 +61,27 @@ export const Header: React.FC = () => {
           </span>
         </motion.div>
 
-        {/* Zona centro - Links */}
+        {/* Center zone - Links */}
         <div className="hidden md:flex flex-1 justify-center space-x-8">
-          <button onClick={() => scrollToSection('services')} className="text-white text-sm font-medium hover:tracking-wide transition-all mix-blend-difference">
+          <button 
+            onClick={() => scrollToSection('services')} 
+            className="text-white text-sm font-medium hover:tracking-wide transition-all mix-blend-difference"
+          >
             Servicios
           </button>
-          <button onClick={() => scrollToSection('portfolio')} className="text-white text-sm font-medium hover:tracking-wide transition-all mix-blend-difference">
+          <button 
+            onClick={() => scrollToSection('portfolio')} 
+            className="text-white text-sm font-medium hover:tracking-wide transition-all mix-blend-difference"
+          >
             Proyectos
           </button>
         </div>
-         <div className="pointer-events-auto hidden md:flex">
-            <TrackingButton />
-          </div>
+
+        {/* Right zone - CTA Button */}
+        <div className="hidden md:flex">
+          <TrackingButton />
+        </div>
       </nav>
-    </header>
+    </motion.header>
   );
 };
