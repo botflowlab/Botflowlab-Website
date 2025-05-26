@@ -22,7 +22,7 @@ export const StarsAnimation: React.FC = () => {
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 1.2 + 0.3,
-      speedX: Math.random() * 0.7 + 0.01,
+      speedX: Math.random() * 0.05 + 0.01,
       speedY: -(Math.random() * 0.02 + 0.01),
       opacity: Math.random() * 0.8 + 0.7,
     }));
