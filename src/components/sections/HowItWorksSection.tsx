@@ -90,7 +90,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent z-[1]" />
 
       <div className="relative flex items-center justify-center py-20">
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1600px] mx-auto px-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -132,11 +132,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content Card */}
+                  {/* Content Card - Made bigger */}
                   <div className="w-5/12">
                     <motion.div
                       onClick={() => handleStepClick(index)}
-                      className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-8 transition-all duration-500 hover:bg-white/10 ${
+                      className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 min-h-[320px] transition-all duration-500 hover:bg-white/10 ${
                         activeStep >= index 
                           ? 'border-white/30 bg-white/10 scale-105' 
                           : 'border-white/10 hover:border-white/20'
@@ -144,7 +144,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                       whileHover={{ scale: activeStep >= index ? 1.05 : 1.02 }}
                     >
                       {/* Step Label */}
-                      <div className="text-white/60 text-sm font-bold mb-3 tracking-wider">
+                      <div className="text-white/60 text-sm font-bold mb-4 tracking-wider">
                         {step.step}
                       </div>
 
@@ -157,8 +157,8 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         </div>
                       </div>
 
-                      {/* Title */}
-                      <h3 className="text-white text-xl md:text-2xl font-bold mb-4">
+                      {/* Title - Better spacing and wrapping */}
+                      <h3 className="text-white text-xl md:text-2xl xl:text-3xl font-bold mb-6 leading-tight break-words">
                         {step.title}
                       </h3>
 
@@ -168,28 +168,53 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           e.stopPropagation();
                           toggleExpanded(index);
                         }}
-                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium"
+                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3"
                       >
                         {expandedStep === index ? 'Ver menos' : 'Ver más'}
-                        {expandedStep === index ? 
-                          <ChevronUp className="w-4 h-4" /> : 
+                        <motion.div
+                          animate={{ rotate: expandedStep === index ? 180 : 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
                           <ChevronDown className="w-4 h-4" />
-                        }
+                        </motion.div>
                       </button>
 
-                      {/* Expanded Description */}
+                      {/* Expanded Description - Smoother animation */}
                       <AnimatePresence>
                         {expandedStep === index && (
                           <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="mt-4 pt-4 border-t border-white/10"
+                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                            animate={{ 
+                              opacity: 1, 
+                              height: 'auto', 
+                              marginTop: 16,
+                              transition: {
+                                height: { duration: 0.4, ease: "easeInOut" },
+                                opacity: { duration: 0.3, delay: 0.1 },
+                                marginTop: { duration: 0.4, ease: "easeInOut" }
+                              }
+                            }}
+                            exit={{ 
+                              opacity: 0, 
+                              height: 0, 
+                              marginTop: 0,
+                              transition: {
+                                opacity: { duration: 0.2 },
+                                height: { duration: 0.3, delay: 0.1, ease: "easeInOut" },
+                                marginTop: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
+                              }
+                            }}
+                            className="pt-4 border-t border-white/10 overflow-hidden"
                           >
-                            <p className="text-white/80 leading-relaxed">
+                            <motion.p 
+                              initial={{ y: 10 }}
+                              animate={{ y: 0 }}
+                              exit={{ y: -10 }}
+                              transition={{ duration: 0.3 }}
+                              className="text-white/80 leading-relaxed text-base"
+                            >
                               {step.description}
-                            </p>
+                            </motion.p>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -261,25 +286,25 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     <div className="flex-1">
                       <motion.div
                         onClick={() => handleStepClick(index)}
-                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
+                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 min-h-[200px] transition-all duration-500 hover:bg-white/10 ${
                           activeStep >= index 
                             ? 'border-white/30 bg-white/10' 
                             : 'border-white/10 hover:border-white/20'
                         }`}
                       >
                         {/* Step Label */}
-                        <div className="text-white/60 text-xs font-bold mb-2 tracking-wider">
+                        <div className="text-white/60 text-xs font-bold mb-3 tracking-wider">
                           {step.step}
                         </div>
 
                         {/* Icon and Title */}
-                        <div className="flex items-center gap-4 mb-4">
+                        <div className="flex items-start gap-4 mb-4">
                           <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center flex-shrink-0`}>
                             <div className="text-white text-sm">
                               {step.icon}
                             </div>
                           </div>
-                          <h3 className="text-white text-lg font-bold flex-1">
+                          <h3 className="text-white text-lg md:text-xl font-bold flex-1 leading-tight break-words">
                             {step.title}
                           </h3>
                         </div>
@@ -290,28 +315,53 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                             e.stopPropagation();
                             toggleExpanded(index);
                           }}
-                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium"
+                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3"
                         >
                           {expandedStep === index ? 'Ver menos' : 'Ver más'}
-                          {expandedStep === index ? 
-                            <ChevronUp className="w-4 h-4" /> : 
+                          <motion.div
+                            animate={{ rotate: expandedStep === index ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
                             <ChevronDown className="w-4 h-4" />
-                          }
+                          </motion.div>
                         </button>
 
-                        {/* Expanded Description */}
+                        {/* Expanded Description - Smoother animation */}
                         <AnimatePresence>
                           {expandedStep === index && (
                             <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="mt-4 pt-4 border-t border-white/10"
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ 
+                                opacity: 1, 
+                                height: 'auto', 
+                                marginTop: 16,
+                                transition: {
+                                  height: { duration: 0.4, ease: "easeInOut" },
+                                  opacity: { duration: 0.3, delay: 0.1 },
+                                  marginTop: { duration: 0.4, ease: "easeInOut" }
+                                }
+                              }}
+                              exit={{ 
+                                opacity: 0, 
+                                height: 0, 
+                                marginTop: 0,
+                                transition: {
+                                  opacity: { duration: 0.2 },
+                                  height: { duration: 0.3, delay: 0.1, ease: "easeInOut" },
+                                  marginTop: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
+                                }
+                              }}
+                              className="pt-4 border-t border-white/10 overflow-hidden"
                             >
-                              <p className="text-white/80 leading-relaxed text-sm">
+                              <motion.p 
+                                initial={{ y: 10 }}
+                                animate={{ y: 0 }}
+                                exit={{ y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-white/80 leading-relaxed text-sm"
+                              >
                                 {step.description}
-                              </p>
+                              </motion.p>
                             </motion.div>
                           )}
                         </AnimatePresence>
