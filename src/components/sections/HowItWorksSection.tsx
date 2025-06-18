@@ -132,11 +132,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content Card - Full size from start */}
-                  <div className="w-5/12">
+                  {/* Content Card - Full width from start */}
+                  <div className="w-1/2 px-8">
                     <motion.div
                       onClick={() => handleStepClick(index)}
-                      className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 transition-all duration-500 hover:bg-white/10 ${
+                      className={`w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 transition-all duration-500 hover:bg-white/10 ${
                         activeStep >= index 
                           ? 'border-white/30 bg-white/10 scale-105' 
                           : 'border-white/10 hover:border-white/20'
@@ -233,7 +233,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   </div>
 
                   {/* Spacer */}
-                  <div className="w-5/12" />
+                  <div className="w-1/2" />
                 </motion.div>
               ))}
             </div>
