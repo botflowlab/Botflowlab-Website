@@ -1,40 +1,82 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Monitor, Database, LineChart, Rocket } from 'lucide-react';
-import { AnimatedServiceButton } from '../ui/AnimatedServiceButton';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Monitor, Database, LineChart, Rocket, ChevronDown, ChevronUp } from 'lucide-react';
 import { IntroSeparatorSection } from './IntroSeparatorSection';
 
+interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  gradient: string;
+}
+
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
-  const steps = [
+  const [activeStep, setActiveStep] = useState(0);
+  const [expandedStep, setExpandedStep] = useState<number | null>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const steps: ProcessStep[] = [
     {
       step: "PASO 1",
       title: "Desarrollo del sitio web",
       description: "Creamos tu página con estructura clara, rápida y pensada para convertir. El sitio está diseñado con tus clientes en mente, dándoles una experiencia intuitiva y sin esfuerzo.",
-      icon: <Monitor className="w-12 h-12 text-[#DA6040]" />
+      icon: <Monitor className="w-8 h-8" />,
+      color: "#3B82F6",
+      gradient: "from-blue-500 to-blue-600"
     },
     {
-      step: "PASO 2",
+      step: "PASO 2", 
       title: "Automatizaciones + CRM",
       description: "Conectamos un CRM para que no pierdas ningún lead. Tendrás automatizaciones listas para dar seguimiento, enviar correos, recibir pagos y agendar citas online.",
-      icon: <Database className="w-12 h-12 text-[#DA6040]" />
+      icon: <Database className="w-8 h-8" />,
+      color: "#10B981",
+      gradient: "from-emerald-500 to-emerald-600"
     },
     {
       step: "PASO 3",
       title: "Captura y seguimiento de leads",
       description: "El sistema integrado no solo recopila datos, también los activa. Cada lead que entra desde formularios o suscripciones se guarda automáticamente y comienza una secuencia de seguimiento automatizado. No se trata solo de capturar, sino de mantener el contacto, aportar valor y avanzar la conversación.",
-      icon: <LineChart className="w-12 h-12 text-[#DA6040]" />
+      icon: <LineChart className="w-8 h-8" />,
+      color: "#8B5CF6",
+      gradient: "from-purple-500 to-purple-600"
     },
     {
       step: "PASO 4",
       title: "Lanzamiento y mejora continua",
       description: "No paramos en la publicación del sitio. Una vez publicado, seguimos monitoreando cómo navegan tus usuarios para detectar qué funciona y qué se puede optimizar. Usamos datos reales para mantener el rendimiento en su punto más alto.",
-      icon: <Rocket className="w-12 h-12 text-[#DA6040]" />
+      icon: <Rocket className="w-8 h-8" />,
+      color: "#F59E0B",
+      gradient: "from-amber-500 to-amber-600"
     }
   ];
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, steps.length]);
+
+  const handleStepClick = (index: number) => {
+    setActiveStep(index);
+    setIsAutoPlaying(false);
+    setExpandedStep(expandedStep === index ? null : index);
+  };
+
+  const toggleExpanded = (index: number) => {
+    setExpandedStep(expandedStep === index ? null : index);
+  };
 
   return (
     <div id='process' className="min-h-screen relative overflow-hidden">
       <IntroSeparatorSection isVisible={isVisible} />
+      
       {/* Background with gradient transition */}
       <div className="absolute inset-0 bg-black" />
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent z-[1]" />
@@ -48,45 +90,253 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
             transition={{ duration: 0.8 }}
             className="text-center mb-20 max-w-xl mx-auto"
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6" style={{ fontFamily: 'Kumbh Sans' }}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6" style={{ fontFamily: 'Kumbh Sans' }}>
               Nuestro Proceso
             </h2>
-            <p className="text-xl text-white/70 max-w-xl">
+            <p className="text-lg md:text-xl text-white/70 max-w-xl">
               Así es como trabajamos, punto por punto. Rápido y claro.
             </p>
           </motion.div>
 
-          {/* Steps Grid */}
-          <div className="relative z-50 grid md:grid-cols-2 gap-6 mb-16">
-            {steps.map((step, index) => (
+          {/* Desktop Timeline View */}
+          <div className="hidden lg:block relative">
+            {/* Central Timeline Line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/10 transform -translate-x-1/2">
+              {/* Progress Line */}
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="bg-white rounded-[32px] p-8 min-h-[500px] flex flex-col overflow-auto"
-              >
-                {/* Step Label */}
-                <div className="text-[#0c0c0c] text-sm font-bold mb-4">
-                  {step.step}
-                </div>
+                className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#DA6040] to-[#eb5633] rounded-full"
+                initial={{ height: 0 }}
+                animate={{ 
+                  height: `${((activeStep + 1) / steps.length) * 100}%` 
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              />
+            </div>
 
-                {/* Icon */}
-                <div className="mb-6 flex-shrink-0">
-                  {step.icon}
-                </div>
+            {/* Timeline Steps */}
+            <div className="space-y-32">
+              {steps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
+                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                  className={`relative flex items-center ${
+                    index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                  }`}
+                >
+                  {/* Content Card */}
+                  <div className="w-5/12">
+                    <motion.div
+                      onClick={() => handleStepClick(index)}
+                      className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-8 transition-all duration-500 hover:bg-white/10 ${
+                        activeStep === index 
+                          ? 'border-white/30 bg-white/10 scale-105' 
+                          : 'border-white/10 hover:border-white/20'
+                      }`}
+                      whileHover={{ scale: activeStep === index ? 1.05 : 1.02 }}
+                    >
+                      {/* Step Label */}
+                      <div className="text-white/60 text-sm font-bold mb-3 tracking-wider">
+                        {step.step}
+                      </div>
 
-                {/* Title */}
-                <h3 className="text-[#0c0c0c] text-2xl md:text-3xl font-bold mb-6 flex-shrink-0">
-                  {step.title}
-                </h3>
+                      {/* Icon */}
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-6 transition-transform duration-300 ${
+                        activeStep === index ? 'scale-110' : ''
+                      }`}>
+                        <div className="text-white">
+                          {step.icon}
+                        </div>
+                      </div>
 
-                {/* Description */}
-                <p className="text-[#0E0A1F]/70 text-lg md:text-2xl leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
+                      {/* Title */}
+                      <h3 className="text-white text-xl md:text-2xl font-bold mb-4">
+                        {step.title}
+                      </h3>
+
+                      {/* Description Preview */}
+                      <p className="text-white/70 text-sm leading-relaxed mb-4">
+                        {step.description.substring(0, 120)}...
+                      </p>
+
+                      {/* Expand Button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleExpanded(index);
+                        }}
+                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium"
+                      >
+                        {expandedStep === index ? 'Ver menos' : 'Ver más'}
+                        {expandedStep === index ? 
+                          <ChevronUp className="w-4 h-4" /> : 
+                          <ChevronDown className="w-4 h-4" />
+                        }
+                      </button>
+
+                      {/* Expanded Description */}
+                      <AnimatePresence>
+                        {expandedStep === index && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-4 pt-4 border-t border-white/10"
+                          >
+                            <p className="text-white/80 leading-relaxed">
+                              {step.description}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  </div>
+
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                    <motion.div
+                      className={`w-6 h-6 rounded-full border-4 transition-all duration-500 ${
+                        activeStep >= index 
+                          ? 'bg-[#DA6040] border-[#DA6040] scale-125' 
+                          : 'bg-black border-white/30'
+                      }`}
+                      animate={{
+                        scale: activeStep === index ? 1.5 : activeStep > index ? 1.25 : 1,
+                        boxShadow: activeStep === index ? `0 0 20px ${step.color}` : 'none'
+                      }}
+                    />
+                  </div>
+
+                  {/* Spacer */}
+                  <div className="w-5/12" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile/Tablet View */}
+          <div className="lg:hidden">
+            <div className="relative">
+              {/* Mobile Timeline Line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-white/10">
+                <motion.div
+                  className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#DA6040] to-[#eb5633] rounded-full"
+                  initial={{ height: 0 }}
+                  animate={{ 
+                    height: `${((activeStep + 1) / steps.length) * 100}%` 
+                  }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                />
+              </div>
+
+              {/* Mobile Steps */}
+              <div className="space-y-8">
+                {steps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 50 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    className="relative flex items-start gap-6"
+                  >
+                    {/* Timeline Node */}
+                    <div className="relative z-10 flex-shrink-0">
+                      <motion.div
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
+                          activeStep >= index 
+                            ? 'bg-[#DA6040] border-[#DA6040]' 
+                            : 'bg-black border-white/30'
+                        }`}
+                        animate={{
+                          scale: activeStep === index ? 1.5 : 1,
+                          boxShadow: activeStep === index ? `0 0 15px ${step.color}` : 'none'
+                        }}
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <motion.div
+                        onClick={() => handleStepClick(index)}
+                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
+                          activeStep === index 
+                            ? 'border-white/30 bg-white/10' 
+                            : 'border-white/10 hover:border-white/20'
+                        }`}
+                      >
+                        {/* Step Label */}
+                        <div className="text-white/60 text-xs font-bold mb-2 tracking-wider">
+                          {step.step}
+                        </div>
+
+                        {/* Icon and Title */}
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center flex-shrink-0`}>
+                            <div className="text-white text-sm">
+                              {step.icon}
+                            </div>
+                          </div>
+                          <h3 className="text-white text-lg font-bold flex-1">
+                            {step.title}
+                          </h3>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-white/70 text-sm leading-relaxed mb-3">
+                          {expandedStep === index ? step.description : `${step.description.substring(0, 100)}...`}
+                        </p>
+
+                        {/* Expand Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleExpanded(index);
+                          }}
+                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium"
+                        >
+                          {expandedStep === index ? 'Ver menos' : 'Ver más'}
+                          {expandedStep === index ? 
+                            <ChevronUp className="w-4 h-4" /> : 
+                            <ChevronDown className="w-4 h-4" />
+                          }
+                        </button>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Progress Indicators */}
+            <div className="flex justify-center mt-12 gap-2">
+              {steps.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleStepClick(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeStep 
+                      ? 'bg-[#DA6040] scale-125' 
+                      : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Auto-play Control */}
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              className={`px-6 py-2 rounded-full border transition-all duration-300 ${
+                isAutoPlaying 
+                  ? 'border-[#DA6040] text-[#DA6040] bg-[#DA6040]/10' 
+                  : 'border-white/30 text-white/70 hover:border-white/50'
+              }`}
+            >
+              {isAutoPlaying ? 'Pausar' : 'Reproducir'} auto-avance
+            </button>
           </div>
         </div>
       </div>
