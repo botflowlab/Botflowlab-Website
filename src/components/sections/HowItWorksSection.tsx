@@ -133,7 +133,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   }`}
                 >
                   {/* Content Card - Made bigger */}
-                  <div className="w-5/12">
+                  <div className="w-12/12">
                     <motion.div
                       onClick={() => handleStepClick(index)}
                       className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 min-h-[320px] transition-all duration-500 hover:bg-white/10 ${
