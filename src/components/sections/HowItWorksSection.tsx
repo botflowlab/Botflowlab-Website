@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Monitor, Database, LineChart, Rocket, ChevronDown, ChevronUp } from 'lucide-react';
 import { IntroSeparatorSection } from './IntroSeparatorSection';
@@ -15,7 +15,6 @@ interface ProcessStep {
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const steps: ProcessStep[] = [
     {
@@ -52,21 +51,8 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     }
   ];
 
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, steps.length]);
-
   const handleStepClick = (index: number) => {
     setActiveStep(index);
-    setIsAutoPlaying(false);
-    setExpandedStep(expandedStep === index ? null : index);
   };
 
   const toggleExpanded = (index: number) => {
@@ -102,7 +88,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
           <div className="hidden lg:block relative">
             {/* Central Timeline Line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/10 transform -translate-x-1/2">
-              {/* Progress Line */}
+              {/* Progress Line - follows user interaction */}
               <motion.div
                 className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#DA6040] to-[#eb5633] rounded-full"
                 initial={{ height: 0 }}
@@ -150,15 +136,10 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         </div>
                       </div>
 
-                      {/* Title */}
+                      {/* Title Only */}
                       <h3 className="text-white text-xl md:text-2xl font-bold mb-4">
                         {step.title}
                       </h3>
-
-                      {/* Description Preview */}
-                      <p className="text-white/70 text-sm leading-relaxed mb-4">
-                        {step.description.substring(0, 120)}...
-                      </p>
 
                       {/* Expand Button */}
                       <button
@@ -168,11 +149,8 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         }}
                         className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium"
                       >
-                        {expandedStep === index ? 'Ver menos' : 'Ver más'}
-                        {expandedStep === index ? 
-                          <ChevronUp className="w-4 h-4" /> : 
-                          <ChevronDown className="w-4 h-4" />
-                        }
+                        Ver más
+                        <ChevronDown className="w-4 h-4" />
                       </button>
 
                       {/* Expanded Description */}
@@ -188,6 +166,16 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                             <p className="text-white/80 leading-relaxed">
                               {step.description}
                             </p>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleExpanded(index);
+                              }}
+                              className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium mt-3"
+                            >
+                              Ver menos
+                              <ChevronUp className="w-4 h-4" />
+                            </button>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -197,15 +185,17 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   {/* Timeline Node */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                     <motion.div
-                      className={`w-6 h-6 rounded-full border-4 transition-all duration-500 ${
+                      className={`w-6 h-6 rounded-full border-4 transition-all duration-500 cursor-pointer ${
                         activeStep >= index 
                           ? 'bg-[#DA6040] border-[#DA6040] scale-125' 
-                          : 'bg-black border-white/30'
+                          : 'bg-black border-white/30 hover:border-white/50'
                       }`}
+                      onClick={() => handleStepClick(index)}
                       animate={{
                         scale: activeStep === index ? 1.5 : activeStep > index ? 1.25 : 1,
                         boxShadow: activeStep === index ? `0 0 20px ${step.color}` : 'none'
                       }}
+                      whileHover={{ scale: activeStep === index ? 1.5 : 1.1 }}
                     />
                   </div>
 
@@ -244,15 +234,17 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     {/* Timeline Node */}
                     <div className="relative z-10 flex-shrink-0">
                       <motion.div
-                        className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-500 cursor-pointer ${
                           activeStep >= index 
                             ? 'bg-[#DA6040] border-[#DA6040]' 
-                            : 'bg-black border-white/30'
+                            : 'bg-black border-white/30 hover:border-white/50'
                         }`}
+                        onClick={() => handleStepClick(index)}
                         animate={{
                           scale: activeStep === index ? 1.5 : 1,
                           boxShadow: activeStep === index ? `0 0 15px ${step.color}` : 'none'
                         }}
+                        whileHover={{ scale: activeStep === index ? 1.5 : 1.2 }}
                       />
                     </div>
 
@@ -283,11 +275,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           </h3>
                         </div>
 
-                        {/* Description */}
-                        <p className="text-white/70 text-sm leading-relaxed mb-3">
-                          {expandedStep === index ? step.description : `${step.description.substring(0, 100)}...`}
-                        </p>
-
                         {/* Expand Button */}
                         <button
                           onClick={(e) => {
@@ -296,12 +283,36 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           }}
                           className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium"
                         >
-                          {expandedStep === index ? 'Ver menos' : 'Ver más'}
-                          {expandedStep === index ? 
-                            <ChevronUp className="w-4 h-4" /> : 
-                            <ChevronDown className="w-4 h-4" />
-                          }
+                          Ver más
+                          <ChevronDown className="w-4 h-4" />
                         </button>
+
+                        {/* Expanded Description */}
+                        <AnimatePresence>
+                          {expandedStep === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="mt-4 pt-4 border-t border-white/10"
+                            >
+                              <p className="text-white/80 leading-relaxed text-sm">
+                                {step.description}
+                              </p>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleExpanded(index);
+                                }}
+                                className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-colors text-sm font-medium mt-3"
+                              >
+                                Ver menos
+                                <ChevronUp className="w-4 h-4" />
+                              </button>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </motion.div>
                     </div>
                   </motion.div>
@@ -323,20 +334,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                 />
               ))}
             </div>
-          </div>
-
-          {/* Auto-play Control */}
-          <div className="flex justify-center mt-12">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`px-6 py-2 rounded-full border transition-all duration-300 ${
-                isAutoPlaying 
-                  ? 'border-[#DA6040] text-[#DA6040] bg-[#DA6040]/10' 
-                  : 'border-white/30 text-white/70 hover:border-white/50'
-              }`}
-            >
-              {isAutoPlaying ? 'Pausar' : 'Reproducir'} auto-avance
-            </button>
           </div>
         </div>
       </div>
