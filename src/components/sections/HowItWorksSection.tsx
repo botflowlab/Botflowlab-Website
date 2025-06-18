@@ -128,15 +128,15 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  className={`relative flex items-center ${
+                  className={`relative flex items-start ${
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content Card - Made bigger */}
+                  {/* Content Card - Full size from start */}
                   <div className="w-5/12">
                     <motion.div
                       onClick={() => handleStepClick(index)}
-                      className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 min-h-[320px] transition-all duration-500 hover:bg-white/10 ${
+                      className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 transition-all duration-500 hover:bg-white/10 ${
                         activeStep >= index 
                           ? 'border-white/30 bg-white/10 scale-105' 
                           : 'border-white/10 hover:border-white/20'
@@ -168,7 +168,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           e.stopPropagation();
                           toggleExpanded(index);
                         }}
-                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3"
+                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3 mb-4"
                       >
                         {expandedStep === index ? 'Ver menos' : 'Ver más'}
                         <motion.div
@@ -179,32 +179,28 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         </motion.div>
                       </button>
 
-                      {/* Expanded Description - Smoother animation */}
+                      {/* Description - Slides down smoothly */}
                       <AnimatePresence>
                         {expandedStep === index && (
                           <motion.div
-                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                            initial={{ opacity: 0, height: 0 }}
                             animate={{ 
                               opacity: 1, 
-                              height: 'auto', 
-                              marginTop: 16,
+                              height: 'auto',
                               transition: {
                                 height: { duration: 0.4, ease: "easeInOut" },
-                                opacity: { duration: 0.3, delay: 0.1 },
-                                marginTop: { duration: 0.4, ease: "easeInOut" }
+                                opacity: { duration: 0.3, delay: 0.1 }
                               }
                             }}
                             exit={{ 
                               opacity: 0, 
-                              height: 0, 
-                              marginTop: 0,
+                              height: 0,
                               transition: {
                                 opacity: { duration: 0.2 },
-                                height: { duration: 0.3, delay: 0.1, ease: "easeInOut" },
-                                marginTop: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
+                                height: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
                               }
                             }}
-                            className="pt-4 border-t border-white/10 overflow-hidden"
+                            className="border-t border-white/10 pt-4 overflow-hidden"
                           >
                             <motion.p 
                               initial={{ y: 10 }}
@@ -222,7 +218,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   </div>
 
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10 top-16">
                     <motion.div
                       className={`w-6 h-6 rounded-full border-4 transition-all duration-500 ${
                         activeStep >= index 
@@ -268,7 +264,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     className="relative flex items-start gap-6"
                   >
                     {/* Timeline Node */}
-                    <div className="relative z-10 flex-shrink-0">
+                    <div className="relative z-10 flex-shrink-0 mt-6">
                       <motion.div
                         className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
                           activeStep >= index 
@@ -286,7 +282,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     <div className="flex-1">
                       <motion.div
                         onClick={() => handleStepClick(index)}
-                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 min-h-[200px] transition-all duration-500 hover:bg-white/10 ${
+                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
                           activeStep >= index 
                             ? 'border-white/30 bg-white/10' 
                             : 'border-white/10 hover:border-white/20'
@@ -315,7 +311,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                             e.stopPropagation();
                             toggleExpanded(index);
                           }}
-                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3"
+                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3 mb-4"
                         >
                           {expandedStep === index ? 'Ver menos' : 'Ver más'}
                           <motion.div
@@ -326,32 +322,28 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           </motion.div>
                         </button>
 
-                        {/* Expanded Description - Smoother animation */}
+                        {/* Description - Slides down smoothly */}
                         <AnimatePresence>
                           {expandedStep === index && (
                             <motion.div
-                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              initial={{ opacity: 0, height: 0 }}
                               animate={{ 
                                 opacity: 1, 
-                                height: 'auto', 
-                                marginTop: 16,
+                                height: 'auto',
                                 transition: {
                                   height: { duration: 0.4, ease: "easeInOut" },
-                                  opacity: { duration: 0.3, delay: 0.1 },
-                                  marginTop: { duration: 0.4, ease: "easeInOut" }
+                                  opacity: { duration: 0.3, delay: 0.1 }
                                 }
                               }}
                               exit={{ 
                                 opacity: 0, 
-                                height: 0, 
-                                marginTop: 0,
+                                height: 0,
                                 transition: {
                                   opacity: { duration: 0.2 },
-                                  height: { duration: 0.3, delay: 0.1, ease: "easeInOut" },
-                                  marginTop: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
+                                  height: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
                                 }
                               }}
-                              className="pt-4 border-t border-white/10 overflow-hidden"
+                              className="border-t border-white/10 pt-4 overflow-hidden"
                             >
                               <motion.p 
                                 initial={{ y: 10 }}
