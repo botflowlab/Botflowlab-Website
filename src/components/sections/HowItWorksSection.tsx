@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Monitor, Database, LineChart, Rocket, ChevronDown, ChevronUp } from 'lucide-react';
 import { IntroSeparatorSection } from './IntroSeparatorSection';
 
@@ -15,7 +15,7 @@ interface ProcessStep {
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps: ProcessStep[] = [
     {
@@ -52,20 +52,28 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     }
   ];
 
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 4000);
+  // Scroll-based timeline progress
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start center", "end center"]
+  });
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, steps.length]);
+  // Transform scroll progress to timeline progress
+  const timelineProgress = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  // Update active step based on scroll progress
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      const stepIndex = Math.floor(latest * steps.length);
+      const clampedIndex = Math.min(Math.max(stepIndex, 0), steps.length - 1);
+      setActiveStep(clampedIndex);
+    });
+
+    return () => unsubscribe();
+  }, [scrollYProgress, steps.length]);
 
   const handleStepClick = (index: number) => {
     setActiveStep(index);
-    setIsAutoPlaying(false);
     setExpandedStep(expandedStep === index ? null : index);
   };
 
@@ -74,7 +82,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
   };
 
   return (
-    <div id='process' className="min-h-screen relative overflow-hidden">
+    <div id='process' className="min-h-screen relative overflow-hidden" ref={sectionRef}>
       <IntroSeparatorSection isVisible={isVisible} />
       
       {/* Background with gradient transition */}
@@ -102,14 +110,13 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
           <div className="hidden lg:block relative">
             {/* Central Timeline Line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/10 transform -translate-x-1/2">
-              {/* Progress Line */}
+              {/* Progress Line - follows scroll */}
               <motion.div
                 className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#DA6040] to-[#eb5633] rounded-full"
-                initial={{ height: 0 }}
-                animate={{ 
-                  height: `${((activeStep + 1) / steps.length) * 100}%` 
+                style={{ 
+                  height: useTransform(timelineProgress, [0, 100], ["0%", "100%"])
                 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                transition={{ type: "spring", stiffness: 100, damping: 30 }}
               />
             </div>
 
@@ -130,11 +137,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     <motion.div
                       onClick={() => handleStepClick(index)}
                       className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-8 transition-all duration-500 hover:bg-white/10 ${
-                        activeStep === index 
+                        activeStep >= index 
                           ? 'border-white/30 bg-white/10 scale-105' 
                           : 'border-white/10 hover:border-white/20'
                       }`}
-                      whileHover={{ scale: activeStep === index ? 1.05 : 1.02 }}
+                      whileHover={{ scale: activeStep >= index ? 1.05 : 1.02 }}
                     >
                       {/* Step Label */}
                       <div className="text-white/60 text-sm font-bold mb-3 tracking-wider">
@@ -143,7 +150,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
 
                       {/* Icon */}
                       <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-6 transition-transform duration-300 ${
-                        activeStep === index ? 'scale-110' : ''
+                        activeStep >= index ? 'scale-110' : ''
                       }`}>
                         <div className="text-white">
                           {step.icon}
@@ -154,11 +161,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                       <h3 className="text-white text-xl md:text-2xl font-bold mb-4">
                         {step.title}
                       </h3>
-
-                      {/* Description Preview */}
-                      <p className="text-white/70 text-sm leading-relaxed mb-4">
-                        {step.description.substring(0, 120)}...
-                      </p>
 
                       {/* Expand Button */}
                       <button
@@ -223,11 +225,10 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-white/10">
                 <motion.div
                   className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#DA6040] to-[#eb5633] rounded-full"
-                  initial={{ height: 0 }}
-                  animate={{ 
-                    height: `${((activeStep + 1) / steps.length) * 100}%` 
+                  style={{ 
+                    height: useTransform(timelineProgress, [0, 100], ["0%", "100%"])
                   }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  transition={{ type: "spring", stiffness: 100, damping: 30 }}
                 />
               </div>
 
@@ -261,7 +262,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                       <motion.div
                         onClick={() => handleStepClick(index)}
                         className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
-                          activeStep === index 
+                          activeStep >= index 
                             ? 'border-white/30 bg-white/10' 
                             : 'border-white/10 hover:border-white/20'
                         }`}
@@ -283,11 +284,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           </h3>
                         </div>
 
-                        {/* Description */}
-                        <p className="text-white/70 text-sm leading-relaxed mb-3">
-                          {expandedStep === index ? step.description : `${step.description.substring(0, 100)}...`}
-                        </p>
-
                         {/* Expand Button */}
                         <button
                           onClick={(e) => {
@@ -302,41 +298,46 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                             <ChevronDown className="w-4 h-4" />
                           }
                         </button>
+
+                        {/* Expanded Description */}
+                        <AnimatePresence>
+                          {expandedStep === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="mt-4 pt-4 border-t border-white/10"
+                            >
+                              <p className="text-white/80 leading-relaxed text-sm">
+                                {step.description}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </motion.div>
                     </div>
                   </motion.div>
                 ))}
               </div>
             </div>
-
-            {/* Mobile Progress Indicators */}
-            <div className="flex justify-center mt-12 gap-2">
-              {steps.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleStepClick(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeStep 
-                      ? 'bg-[#DA6040] scale-125' 
-                      : 'bg-white/30 hover:bg-white/50'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
 
-          {/* Auto-play Control */}
+          {/* Scroll Indicator */}
           <div className="flex justify-center mt-12">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`px-6 py-2 rounded-full border transition-all duration-300 ${
-                isAutoPlaying 
-                  ? 'border-[#DA6040] text-[#DA6040] bg-[#DA6040]/10' 
-                  : 'border-white/30 text-white/70 hover:border-white/50'
-              }`}
-            >
-              {isAutoPlaying ? 'Pausar' : 'Reproducir'} auto-avance
-            </button>
+            <div className="text-white/60 text-sm text-center">
+              <p>Desplázate para ver el progreso del timeline</p>
+              <div className="flex justify-center mt-2 gap-1">
+                {steps.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      activeStep >= index ? 'bg-[#DA6040]' : 'bg-white/20'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
