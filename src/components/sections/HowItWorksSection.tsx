@@ -322,23 +322,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
               </div>
             </div>
           </div>
-
-          {/* Scroll Indicator */}
-          <div className="flex justify-center mt-12">
-            <div className="text-white/60 text-sm text-center">
-              <p>Desplázate para ver el progreso del timeline</p>
-              <div className="flex justify-center mt-2 gap-1">
-                {steps.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      activeStep >= index ? 'bg-[#DA6040]' : 'bg-white/20'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
