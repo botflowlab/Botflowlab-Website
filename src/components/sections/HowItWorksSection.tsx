@@ -26,7 +26,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     },
     {
       step: "PASO 2", 
-      title: "Publicación",
+      title: "Automatizaciones + CRM",
       description: "Conectamos un CRM para que no pierdas ningún lead. Tendrás automatizaciones listas para dar seguimiento, enviar correos, recibir pagos y agendar citas online.",
       icon: <Database className="w-8 h-8" />,
       color: "#10B981",
