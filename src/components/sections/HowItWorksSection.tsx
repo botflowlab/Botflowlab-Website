@@ -79,7 +79,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     <div id='process' className="min-h-screen relative overflow-hidden" ref={sectionRef}>
       <IntroSeparatorSection isVisible={isVisible} />
       
-      {/* Background with gradient transition */}
       <div className="absolute inset-0 bg-black" />
 
       <div className="relative flex items-center justify-center py-20">
