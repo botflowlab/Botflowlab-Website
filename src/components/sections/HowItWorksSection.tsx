@@ -86,7 +86,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
       <IntroSeparatorSection isVisible={isVisible} />
       
       {/* Background with gradient transition */}
-      <div className="absolute inset-0 bg-black" />
+
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent z-[1]" />
 
       <div className="relative flex items-center justify-center py-20">
