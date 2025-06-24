@@ -13,7 +13,7 @@ interface ProcessStep {
 }
 
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps: ProcessStep[] = [
