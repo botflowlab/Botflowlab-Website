@@ -279,7 +279,7 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
                 <span>Garantía de resultados</span>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
