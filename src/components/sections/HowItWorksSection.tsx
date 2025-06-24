@@ -113,55 +113,90 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
             </div>
 
             {/* Timeline Steps */}
-            <div className="space-y-32">
-              {steps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  className={`relative flex items-start ${
-                    index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                  }`}
-                >
-                  {/* Content Card - Much wider and always expanded */}
-                  <div className="w-[45%] px-4">
-                    <motion.div
-                      onClick={() => handleStepClick(index)}
-                      className={`w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-12 transition-all duration-500 hover:bg-white/10 ${
-                        activeStep >= index 
-                          ? 'border-white/30 bg-white/10 scale-105' 
-                          : 'border-white/10 hover:border-white/20'
-                      }`}
-                      whileHover={{ scale: activeStep >= index ? 1.05 : 1.02 }}
-                    >
-                      {/* Step Label */}
-                      <div className="text-white/60 text-sm font-bold mb-4 tracking-wider">
-                        {step.step}
-                      </div>
+            {steps.map((step, index) => {
+  const isOpen = activeStep === index;
 
-                      {/* Icon */}
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-6 transition-transform duration-300 ${
-                        activeStep >= index ? 'scale-110' : ''
-                      }`}>
-                        <div className="text-white">
-                          {step.icon}
-                        </div>
-                      </div>
+  return (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
+      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+      className={`relative flex items-start ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+    >
+      <div className="w-[45%] px-4">
+        <motion.div
+          onClick={() => handleStepClick(index)}
+          className={`w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-12 transition-all duration-500 hover:bg-white/10 ${
+            activeStep >= index 
+              ? 'border-white/30 bg-white/10 scale-105' 
+              : 'border-white/10 hover:border-white/20'
+          }`}
+          whileHover={{ scale: activeStep >= index ? 1.05 : 1.02 }}
+        >
+          {/* Step Label */}
+          <div className="text-white/60 text-sm font-bold mb-4 tracking-wider">
+            {step.step}
+          </div>
 
-                      {/* Title - Single line with proper spacing */}
-                      <h3 className="text-white text-2xl xl:text-3xl font-bold mb-6 leading-tight whitespace-nowrap">
-                        {step.title}
-                      </h3>
+          {/* Icon */}
+          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-6 transition-transform duration-300 ${
+            activeStep >= index ? 'scale-110' : ''
+          }`}>
+            <div className="text-white">
+              {step.icon}
+            </div>
+          </div>
 
-                      {/* Description - Always visible */}
-                      <div className="border-t border-white/10 pt-6">
-                        <p className="text-white/80 leading-relaxed text-base">
-                          {step.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </div>
+          {/* Title */}
+          <h3 className="text-white text-2xl xl:text-3xl font-bold leading-tight whitespace-nowrap mb-2">
+            {step.title}
+          </h3>
+
+          {/* Toggle Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // evita que se dispare handleStepClick
+              setActiveStep(isOpen ? -1 : index);
+            }}
+            className="text-sm text-white/60 hover:text-white transition mb-4 underline"
+          >
+            {isOpen ? 'Ver menos' : 'Ver más'}
+          </button>
+
+          {/* Description - Collapsible */}
+          <motion.div
+            initial={false}
+            animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden border-t border-white/10 pt-4"
+          >
+            <p className="text-white/80 leading-relaxed text-base">
+              {step.description}
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Timeline Node */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 z-10 top-16">
+        <motion.div
+          className={`w-6 h-6 rounded-full border-4 transition-all duration-500 ${
+            activeStep >= index 
+              ? 'bg-[#DA6040] border-[#DA6040] scale-125' 
+              : 'bg-black border-white/30'
+          }`}
+          animate={{
+            scale: activeStep === index ? 1.5 : activeStep > index ? 1.25 : 1,
+            boxShadow: activeStep === index ? `0 0 20px ${step.color}` : 'none'
+          }}
+        />
+      </div>
+
+      <div className="w-[45%]" />
+    </motion.div>
+  );
+})}
 
                   {/* Timeline Node */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10 top-16">
