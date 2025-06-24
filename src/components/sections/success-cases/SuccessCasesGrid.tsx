@@ -19,7 +19,7 @@ const successCases = [
     id: 2,
     image: 'https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg',
     overlay: '',
-    title: 'ALEX Y REBE',
+    title: 'ANDRÉS CASTRO ARQUITECTURA',
     subtitle: 'Desarrollo y Diseño web / CRM',
     year: '2024',
   },
