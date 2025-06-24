@@ -15,6 +15,14 @@ const successCases = [
     subtitle: 'Desarrollo y Diseño web / CRM',
     year: '2024',
   },
+  {
+    id: 2,
+    image: 'https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg',
+    overlay: 'https://i.postimg.cc/fLrhzDvD/carrusel55-1-Photoroom.png',
+    title: 'ALEX Y REBE',
+    subtitle: 'Desarrollo y Diseño web / CRM',
+    year: '2024',
+  },
 ];
 
 export const SuccessCasesGrid: React.FC<SuccessCasesGridProps> = ({ isVisible }) => {
