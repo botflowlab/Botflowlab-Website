@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Bot, CreditCard, ArrowRight, Sparkles, Zap, Target } from 'lucide-react';
+import { Rocket, Bot, CreditCard, Sparkles, Zap, Target } from 'lucide-react';
 import { AnimatedServiceButton } from '../ui/AnimatedServiceButton';
 import { useTransition } from '../../context/TransitionContext';
 
@@ -246,37 +246,17 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
                   bg-clip-text text-transparent">
                   La hacemos por ti, con un estudio completo de lo que sirve en tu mercado.
                 </span>
-              </motion.p>
+              </p>
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button - Using the consistent AnimatedServiceButton */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
               transition={{ duration: 0.6, delay: 2 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={handleClick}
-              className="inline-block cursor-pointer group"
             >
-              <div className="relative">
-                {/* Button Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 
-                  rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Button Content */}
-                <div className="relative bg-gradient-to-r from-orange-500 to-red-600 
-                  text-white px-12 py-6 rounded-2xl font-bold text-xl
-                  flex items-center gap-3 group-hover:shadow-2xl transition-all duration-300">
-                  <span>QUIERO MI SITIO</span>
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-6 h-6" />
-                  </motion.div>
-                </div>
-              </div>
+              <AnimatedServiceButton isVisible={isVisible} buttonText="Quiero mi sitio" />
             </motion.div>
 
             {/* Trust Indicators */}
@@ -299,7 +279,7 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
                 <span>Garantía de resultados</span>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
