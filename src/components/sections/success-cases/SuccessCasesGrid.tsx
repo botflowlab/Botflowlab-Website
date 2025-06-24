@@ -20,7 +20,7 @@ const successCases = [
     image: 'https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg',
     overlay: '',
     title: 'ANDRÉS CASTRO ARQUITECTURA',
-    subtitle: 'Desarrollo y Diseño web / CRM',
+    subtitle: 'Desarrollo y Diseño web / Base de datos',
     year: '2024',
   },
 ];
