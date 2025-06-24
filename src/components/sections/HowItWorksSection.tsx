@@ -20,7 +20,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 1",
       title: "Desarrollo del sitio web",
-      description: "Creamos tu página con estructura clara, rápida y pensada para convertir. El sitio está diseñado con tus clientes en mente, dándoles una experiencia intuitiva y sin esfuerzo.",
+      description: "Diseño y desarrollo del sitio",
       icon: <Monitor className="w-8 h-8" />,
       color: "#3B82F6",
       gradient: "from-blue-500 to-blue-600"
