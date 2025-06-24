@@ -108,7 +108,7 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight"
+              className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 leading-tight"
             >
               <span className="block text-white mb-4">
                 No dejes que tu negocio sea
