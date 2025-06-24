@@ -239,7 +239,7 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
               <AnimatedServiceButton isVisible={isVisible} buttonText="Quiero mi sitio" />
             </motion.div>
 
-            {/* Trust Indicators */}
+            {/* Trust Indicators 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: isVisible ? 1 : 0 }}
@@ -258,7 +258,7 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
                 <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
                 <span>Garantía de resultados</span>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>
