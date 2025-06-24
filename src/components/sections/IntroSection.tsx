@@ -102,19 +102,6 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center mb-20"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 
-                border border-purple-500/20 rounded-full px-6 py-3 mb-8 backdrop-blur-sm"
-            >
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-sm font-medium text-purple-300 tracking-wide">
-                Transformación Digital Completa
-              </span>
-            </motion.div>
 
             {/* Main Headline */}
             <motion.h1
