@@ -246,7 +246,7 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
                   bg-clip-text text-transparent">
                   La hacemos por ti, con un estudio completo de lo que sirve en tu mercado.
                 </span>
-              </p>
+              </motion.p>
             </div>
 
             {/* CTA Button - Using the consistent AnimatedServiceButton */}
