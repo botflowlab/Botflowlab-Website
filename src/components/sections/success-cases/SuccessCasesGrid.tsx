@@ -18,7 +18,7 @@ const successCases = [
   {
     id: 2,
     image: 'https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg',
-    overlay: 'https://i.postimg.cc/fLrhzDvD/carrusel55-1-Photoroom.png',
+    overlay: '',
     title: 'ALEX Y REBE',
     subtitle: 'Desarrollo y Diseño web / CRM',
     year: '2024',
