@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Monitor, Database, LineChart, Rocket } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { Monitor, Database, LineChart, Rocket, ChevronDown } from 'lucide-react';
 import { IntroSeparatorSection } from './IntroSeparatorSection';
 
 interface ProcessStep {
@@ -14,6 +14,7 @@ interface ProcessStep {
 
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [expandedStep, setExpandedStep] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps: ProcessStep[] = [
@@ -73,6 +74,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
 
   const handleStepClick = (index: number) => {
     setActiveStep(index);
+  };
+
+  const toggleDescription = (index: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedStep(expandedStep === index ? null : index);
   };
 
   return (
@@ -155,12 +161,42 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         {step.title}
                       </h3>
 
-                      {/* Description - Always visible */}
-                      <div className="border-t border-white/10 pt-6">
-                        <p className="text-white/80 leading-relaxed text-base">
-                          {step.description}
-                        </p>
-                      </div>
+                      {/* Ver más button */}
+                      <button
+                        onClick={(e) => toggleDescription(index, e)}
+                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-200 text-sm font-medium hover:gap-3 mb-4"
+                      >
+                        {expandedStep === index ? 'Ver menos' : 'Ver más'}
+                        <motion.div
+                          animate={{ rotate: expandedStep === index ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ChevronDown className="w-4 h-4" />
+                        </motion.div>
+                      </button>
+
+                      {/* Description - Simple dropdown */}
+                      <AnimatePresence>
+                        {expandedStep === index && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ 
+                              opacity: 1, 
+                              height: 'auto'
+                            }}
+                            exit={{ 
+                              opacity: 0, 
+                              height: 0
+                            }}
+                            transition={{ duration: 0.2 }}
+                            className="border-t border-white/10 pt-4 overflow-hidden"
+                          >
+                            <p className="text-white/80 leading-relaxed text-base">
+                              {step.description}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </motion.div>
                   </div>
 
@@ -252,12 +288,42 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           </h3>
                         </div>
 
-                        {/* Description - Always visible on mobile too */}
-                        <div className="border-t border-white/10 pt-4">
-                          <p className="text-white/80 leading-relaxed text-sm">
-                            {step.description}
-                          </p>
-                        </div>
+                        {/* Ver más button - Mobile */}
+                        <button
+                          onClick={(e) => toggleDescription(index, e)}
+                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-200 text-sm font-medium hover:gap-3 mb-4"
+                        >
+                          {expandedStep === index ? 'Ver menos' : 'Ver más'}
+                          <motion.div
+                            animate={{ rotate: expandedStep === index ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </motion.div>
+                        </button>
+
+                        {/* Description - Simple dropdown - Mobile */}
+                        <AnimatePresence>
+                          {expandedStep === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ 
+                                opacity: 1, 
+                                height: 'auto'
+                              }}
+                              exit={{ 
+                                opacity: 0, 
+                                height: 0
+                              }}
+                              transition={{ duration: 0.2 }}
+                              className="border-t border-white/10 pt-4 overflow-hidden"
+                            >
+                              <p className="text-white/80 leading-relaxed text-sm">
+                                {step.description}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </motion.div>
                     </div>
                   </motion.div>
