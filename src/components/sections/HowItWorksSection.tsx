@@ -131,11 +131,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content Card - Full width from start */}
-                  <div className="w-1/2 px-8">
+                  {/* Content Card - Much wider */}
+                  <div className="w-[45%] px-4">
                     <motion.div
                       onClick={() => handleStepClick(index)}
-                      className={`w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-10 transition-all duration-500 hover:bg-white/10 ${
+                      className={`w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-12 transition-all duration-500 hover:bg-white/10 ${
                         activeStep >= index 
                           ? 'border-white/30 bg-white/10 scale-105' 
                           : 'border-white/10 hover:border-white/20'
@@ -156,8 +156,8 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         </div>
                       </div>
 
-                      {/* Title - Better spacing and wrapping */}
-                      <h3 className="text-white text-xl md:text-2xl xl:text-3xl font-bold mb-6 leading-tight break-words">
+                      {/* Title - Single line with proper spacing */}
+                      <h3 className="text-white text-2xl xl:text-3xl font-bold mb-6 leading-tight whitespace-nowrap">
                         {step.title}
                       </h3>
 
@@ -231,8 +231,8 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     />
                   </div>
 
-                  {/* Spacer */}
-                  <div className="w-1/2" />
+                  {/* Spacer - Smaller to give more room to content */}
+                  <div className="w-[45%]" />
                 </motion.div>
               ))}
             </div>
