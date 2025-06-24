@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Monitor, Database, LineChart, Rocket, ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Monitor, Database, LineChart, Rocket } from 'lucide-react';
 import { IntroSeparatorSection } from './IntroSeparatorSection';
 
 interface ProcessStep {
@@ -14,7 +14,6 @@ interface ProcessStep {
 
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   const [activeStep, setActiveStep] = useState(0);
-  const [expandedStep, setExpandedStep] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps: ProcessStep[] = [
@@ -74,11 +73,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
 
   const handleStepClick = (index: number) => {
     setActiveStep(index);
-    setExpandedStep(expandedStep === index ? null : index);
-  };
-
-  const toggleExpanded = (index: number) => {
-    setExpandedStep(expandedStep === index ? null : index);
   };
 
   return (
@@ -131,7 +125,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content Card - Much wider */}
+                  {/* Content Card - Much wider and always expanded */}
                   <div className="w-[45%] px-4">
                     <motion.div
                       onClick={() => handleStepClick(index)}
@@ -161,58 +155,12 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         {step.title}
                       </h3>
 
-                      {/* Expand Button */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleExpanded(index);
-                        }}
-                        className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3 mb-4"
-                      >
-                        {expandedStep === index ? 'Ver menos' : 'Ver más'}
-                        <motion.div
-                          animate={{ rotate: expandedStep === index ? 180 : 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <ChevronDown className="w-4 h-4" />
-                        </motion.div>
-                      </button>
-
-                      {/* Description - Slides down smoothly */}
-                      <AnimatePresence>
-                        {expandedStep === index && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ 
-                              opacity: 1, 
-                              height: 'auto',
-                              transition: {
-                                height: { duration: 0.4, ease: "easeInOut" },
-                                opacity: { duration: 0.3, delay: 0.1 }
-                              }
-                            }}
-                            exit={{ 
-                              opacity: 0, 
-                              height: 0,
-                              transition: {
-                                opacity: { duration: 0.2 },
-                                height: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
-                              }
-                            }}
-                            className="border-t border-white/10 pt-4 overflow-hidden"
-                          >
-                            <motion.p 
-                              initial={{ y: 10 }}
-                              animate={{ y: 0 }}
-                              exit={{ y: -10 }}
-                              transition={{ duration: 0.3 }}
-                              className="text-white/80 leading-relaxed text-base"
-                            >
-                              {step.description}
-                            </motion.p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                      {/* Description - Always visible */}
+                      <div className="border-t border-white/10 pt-6">
+                        <p className="text-white/80 leading-relaxed text-base">
+                          {step.description}
+                        </p>
+                      </div>
                     </motion.div>
                   </div>
 
@@ -304,58 +252,12 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           </h3>
                         </div>
 
-                        {/* Expand Button */}
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleExpanded(index);
-                          }}
-                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3 mb-4"
-                        >
-                          {expandedStep === index ? 'Ver menos' : 'Ver más'}
-                          <motion.div
-                            animate={{ rotate: expandedStep === index ? 180 : 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
-                          >
-                            <ChevronDown className="w-4 h-4" />
-                          </motion.div>
-                        </button>
-
-                        {/* Description - Slides down smoothly */}
-                        <AnimatePresence>
-                          {expandedStep === index && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ 
-                                opacity: 1, 
-                                height: 'auto',
-                                transition: {
-                                  height: { duration: 0.4, ease: "easeInOut" },
-                                  opacity: { duration: 0.3, delay: 0.1 }
-                                }
-                              }}
-                              exit={{ 
-                                opacity: 0, 
-                                height: 0,
-                                transition: {
-                                  opacity: { duration: 0.2 },
-                                  height: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
-                                }
-                              }}
-                              className="border-t border-white/10 pt-4 overflow-hidden"
-                            >
-                              <motion.p 
-                                initial={{ y: 10 }}
-                                animate={{ y: 0 }}
-                                exit={{ y: -10 }}
-                                transition={{ duration: 0.3 }}
-                                className="text-white/80 leading-relaxed text-sm"
-                              >
-                                {step.description}
-                              </motion.p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                        {/* Description - Always visible on mobile too */}
+                        <div className="border-t border-white/10 pt-4">
+                          <p className="text-white/80 leading-relaxed text-sm">
+                            {step.description}
+                          </p>
+                        </div>
                       </motion.div>
                     </div>
                   </motion.div>
