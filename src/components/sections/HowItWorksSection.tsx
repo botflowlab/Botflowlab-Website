@@ -13,7 +13,7 @@ interface ProcessStep {
 }
 
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps: ProcessStep[] = [
@@ -120,19 +120,19 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  className={relative flex items-start ${
+                  className={`relative flex items-start ${
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                  }}
+                  }`}
                 >
                   {/* Content Card - Much wider and always expanded */}
                   <div className="w-[45%] px-4">
                     <motion.div
                       onClick={() => handleStepClick(index)}
-                      className={w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-12 transition-all duration-500 hover:bg-white/10 ${
+                      className={`w-full cursor-pointer bg-white/5 backdrop-blur-sm border rounded-3xl p-12 transition-all duration-500 hover:bg-white/10 ${
                         activeStep >= index 
                           ? 'border-white/30 bg-white/10 scale-105' 
                           : 'border-white/10 hover:border-white/20'
-                      }}
+                      }`}
                       whileHover={{ scale: activeStep >= index ? 1.05 : 1.02 }}
                     >
                       {/* Step Label */}
@@ -141,9 +141,9 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                       </div>
 
                       {/* Icon */}
-                      <div className={w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-6 transition-transform duration-300 ${
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-6 transition-transform duration-300 ${
                         activeStep >= index ? 'scale-110' : ''
-                      }}>
+                      }`}>
                         <div className="text-white">
                           {step.icon}
                         </div>
@@ -166,14 +166,14 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                   {/* Timeline Node */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10 top-16">
                     <motion.div
-                      className={w-6 h-6 rounded-full border-4 transition-all duration-500 ${
+                      className={`w-6 h-6 rounded-full border-4 transition-all duration-500 ${
                         activeStep >= index 
                           ? 'bg-[#DA6040] border-[#DA6040] scale-125' 
                           : 'bg-black border-white/30'
-                      }}
+                      }`}
                       animate={{
                         scale: activeStep === index ? 1.5 : activeStep > index ? 1.25 : 1,
-                        boxShadow: activeStep === index ? 0 0 20px ${step.color} : 'none'
+                        boxShadow: activeStep === index ? `0 0 20px ${step.color}` : 'none'
                       }}
                     />
                   </div>
@@ -212,14 +212,14 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     {/* Timeline Node */}
                     <div className="relative z-10 flex-shrink-0 mt-6">
                       <motion.div
-                        className={w-4 h-4 rounded-full border-2 transition-all duration-500 ${
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
                           activeStep >= index 
                             ? 'bg-[#DA6040] border-[#DA6040]' 
                             : 'bg-black border-white/30'
-                        }}
+                        }`}
                         animate={{
                           scale: activeStep === index ? 1.5 : 1,
-                          boxShadow: activeStep === index ? 0 0 15px ${step.color} : 'none'
+                          boxShadow: activeStep === index ? `0 0 15px ${step.color}` : 'none'
                         }}
                       />
                     </div>
@@ -228,11 +228,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     <div className="flex-1">
                       <motion.div
                         onClick={() => handleStepClick(index)}
-                        className={cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
+                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
                           activeStep >= index 
                             ? 'border-white/30 bg-white/10' 
                             : 'border-white/10 hover:border-white/20'
-                        }}
+                        }`}
                       >
                         {/* Step Label */}
                         <div className="text-white/60 text-xs font-bold mb-3 tracking-wider">
@@ -241,7 +241,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
 
                         {/* Icon and Title */}
                         <div className="flex items-start gap-4 mb-4">
-                          <div className={w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center flex-shrink-0}>
+                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center flex-shrink-0`}>
                             <div className="text-white text-sm">
                               {step.icon}
                             </div>
@@ -259,6 +259,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         </div>
                       </motion.div>
                     </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
