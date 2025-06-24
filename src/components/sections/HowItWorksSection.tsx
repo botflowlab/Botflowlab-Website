@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Monitor, Database, LineChart, Rocket } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { Monitor, Database, LineChart, Rocket, ChevronDown } from 'lucide-react';
 import { IntroSeparatorSection } from './IntroSeparatorSection';
 
 interface ProcessStep {
@@ -13,7 +13,8 @@ interface ProcessStep {
 }
 
 export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [activeStep, setActiveStep] = useState(0);
+  const [expandedStep, setExpandedStep] = useState<number | null>(null); // Only for mobile
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps: ProcessStep[] = [
@@ -75,6 +76,11 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     setActiveStep(index);
   };
 
+  // Mobile-only expand functionality
+  const toggleMobileExpanded = (index: number) => {
+    setExpandedStep(expandedStep === index ? null : index);
+  };
+
   return (
     <div id='process' className="min-h-screen relative overflow-hidden" ref={sectionRef}>
       <IntroSeparatorSection isVisible={isVisible} />
@@ -98,7 +104,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
             </p>
           </motion.div>
 
-          {/* Desktop Timeline View */}
+          {/* Desktop Timeline View - Always Expanded */}
           <div className="hidden lg:block relative">
             {/* Central Timeline Line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/10 transform -translate-x-1/2">
@@ -124,7 +130,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                   }`}
                 >
-                  {/* Content Card - Much wider and always expanded */}
+                  {/* Content Card - Always expanded on desktop */}
                   <div className="w-[45%] px-4">
                     <motion.div
                       onClick={() => handleStepClick(index)}
@@ -154,7 +160,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         {step.title}
                       </h3>
 
-                      {/* Description - Always visible */}
+                      {/* Description - Always visible on desktop */}
                       <div className="border-t border-white/10 pt-6">
                         <p className="text-white/80 leading-relaxed text-base">
                           {step.description}
@@ -178,14 +184,14 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     />
                   </div>
 
-                  {/* Spacer - Smaller to give more room to content */}
+                  {/* Spacer */}
                   <div className="w-[45%]" />
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Mobile/Tablet View */}
+          {/* Mobile/Tablet View - With Dropdown */}
           <div className="lg:hidden">
             <div className="relative">
               {/* Mobile Timeline Line */}
@@ -227,8 +233,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                     {/* Content */}
                     <div className="flex-1">
                       <motion.div
-                        onClick={() => handleStepClick(index)}
-                        className={`cursor-pointer bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
+                        className={`bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 ${
                           activeStep >= index 
                             ? 'border-white/30 bg-white/10' 
                             : 'border-white/10 hover:border-white/20'
@@ -251,12 +256,55 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                           </h3>
                         </div>
 
-                        {/* Description - Always visible on mobile too */}
-                        <div className="border-t border-white/10 pt-4">
-                          <p className="text-white/80 leading-relaxed text-sm">
-                            {step.description}
-                          </p>
-                        </div>
+                        {/* Expand Button - Mobile Only */}
+                        <button
+                          onClick={() => toggleMobileExpanded(index)}
+                          className="flex items-center gap-2 text-[#DA6040] hover:text-[#eb5633] transition-all duration-300 text-sm font-medium hover:gap-3 mb-4"
+                        >
+                          {expandedStep === index ? 'Ver menos' : 'Ver más'}
+                          <motion.div
+                            animate={{ rotate: expandedStep === index ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </motion.div>
+                        </button>
+
+                        {/* Description - Dropdown on Mobile */}
+                        <AnimatePresence>
+                          {expandedStep === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ 
+                                opacity: 1, 
+                                height: 'auto',
+                                transition: {
+                                  height: { duration: 0.4, ease: "easeInOut" },
+                                  opacity: { duration: 0.3, delay: 0.1 }
+                                }
+                              }}
+                              exit={{ 
+                                opacity: 0, 
+                                height: 0,
+                                transition: {
+                                  opacity: { duration: 0.2 },
+                                  height: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
+                                }
+                              }}
+                              className="border-t border-white/10 pt-4 overflow-hidden"
+                            >
+                              <motion.p 
+                                initial={{ y: 10 }}
+                                animate={{ y: 0 }}
+                                exit={{ y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-white/80 leading-relaxed text-sm"
+                              >
+                                {step.description}
+                              </motion.p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </motion.div>
                     </div>
                   </motion.div>
