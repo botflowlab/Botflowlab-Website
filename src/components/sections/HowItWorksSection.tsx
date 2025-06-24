@@ -259,7 +259,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                         </div>
                       </motion.div>
                     </div>
-                  </motion.div>
                 ))}
               </div>
             </div>
