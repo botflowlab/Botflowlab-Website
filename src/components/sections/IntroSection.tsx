@@ -116,13 +116,6 @@ export const IntroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) =>
               <span className="block bg-gradient-to-r from-orange-400 via-red-500 to-pink-600 
                 bg-clip-text text-transparent relative">
                 un granito de arena
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute -top-4 -right-4 w-8 h-8 text-yellow-400"
-                >
-                  <Sparkles className="w-full h-full" />
-                </motion.div>
               </span>
             </motion.h1>
 
