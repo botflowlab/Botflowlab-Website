@@ -51,7 +51,8 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     }
   ];
 
- const { scrollYProgress } = useScroll({
+ 
+  const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start center", "end center"]
   });
@@ -59,9 +60,14 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
   const timelineProgress = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange(() => {});
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      const stepIndex = Math.floor(latest * steps.length);
+      const clampedIndex = Math.min(Math.max(stepIndex, 0), steps.length - 1);
+      setActiveStep(clampedIndex);
+    });
+
     return () => unsubscribe();
-  }, [scrollYProgress]);
+  }, [scrollYProgress, steps.length]);
 
   return (
     <div id='process' className="min-h-screen relative overflow-hidden" ref={sectionRef}>
@@ -87,7 +93,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/10 transform -translate-x-1/2">
               <motion.div
                 className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#DA6040] to-[#eb5633] rounded-full"
-                style={{ height: useTransform(timelineProgress, [0, 100], ["0%", "100%"]), }}
+                style={{ height: timelineProgress }}
                 transition={{ type: "spring", stiffness: 100, damping: 30 }}
               />
             </div>
