@@ -21,7 +21,7 @@ const successCases = [
     overlay: '',
     title: 'ANDRÉS CASTRO ARQUITECTURA',
     subtitle: 'Desarrollo y Diseño web / Base de datos',
-    year: '2024',
+    year: '2025',
   },
 ];
 
