@@ -112,7 +112,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
               />
             </div>
 
-            {/* Timeline Steps */}
             {steps.map((step, index) => {
   const isOpen = activeStep === index;
 
@@ -197,28 +196,6 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     </motion.div>
   );
 })}
-
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10 top-16">
-                    <motion.div
-                      className={`w-6 h-6 rounded-full border-4 transition-all duration-500 ${
-                        activeStep >= index 
-                          ? 'bg-[#DA6040] border-[#DA6040] scale-125' 
-                          : 'bg-black border-white/30'
-                      }`}
-                      animate={{
-                        scale: activeStep === index ? 1.5 : activeStep > index ? 1.25 : 1,
-                        boxShadow: activeStep === index ? `0 0 20px ${step.color}` : 'none'
-                      }}
-                    />
-                  </div>
-
-                  {/* Spacer - Smaller to give more room to content */}
-                  <div className="w-[45%]" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
 
           {/* Mobile/Tablet View */}
           <div className="lg:hidden">
