@@ -23,7 +23,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
       title: "Desarrollo del sitio web",
       description: "Creamos tu página con estructura clara, rápida y pensada para convertir. El sitio está diseñado con tus clientes en mente, dándoles una experiencia intuitiva y sin esfuerzo.",
       icon: <Monitor className="w-8 h-8" />,
-      color: "#3B82F6",
+      color: "#F59E0B",
       gradient: "from-blue-500 to-blue-600"
     },
     {
@@ -31,7 +31,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
       title: "Automatizaciones + CRM",
       description: "Conectamos un CRM para que no pierdas ningún lead. Tendrás automatizaciones listas para dar seguimiento, enviar correos, recibir pagos y agendar citas online.",
       icon: <Database className="w-8 h-8" />,
-      color: "#10B981",
+      color: "#F59E0B",
       gradient: "from-emerald-500 to-emerald-600"
     },
     {
@@ -39,7 +39,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
       title: "Captura y seguimiento de leads",
       description: "El sistema integrado no solo recopila datos, también los activa. Cada lead que entra desde formularios o suscripciones se guarda automáticamente y comienza una secuencia de seguimiento automatizado. No se trata solo de capturar, sino de mantener el contacto, aportar valor y avanzar la conversación.",
       icon: <LineChart className="w-8 h-8" />,
-      color: "#8B5CF6",
+      color: "#F59E0B",
       gradient: "from-purple-500 to-purple-600"
     },
     {
