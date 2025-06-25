@@ -129,7 +129,7 @@ export const Footer: React.FC = () => {
       {/* Footer Image */}
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden pointer-events-none -z-5">
         <img 
-          src="/footerImg.png" 
+          src="https://i.postimg.cc/LXVT9D7b/rock-podium-brown-stone-stand-display-product-sho-2025-02-27-03-31-45-utc-Photoroom.png" 
           alt="Footer decoration" 
           className="w-full h-auto object-cover opacity-25"
         />
