@@ -18,7 +18,7 @@ export const ContactForm: React.FC = () => {
   } = useContactForm();
 
   return (
-    <div className="bg-black">
+    <div className="bg-black pt-24">
       {/* Contact Form Section */}
       <div className="min-h-screen pt-24 flex items-center justify-center px-4 bg-black">
         <div className="w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
