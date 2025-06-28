@@ -55,7 +55,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
                   <img
                     src="https://i.postimg.cc/sXPYnsFq/Photo-17-9-20-10-28-43-AM.jpg"
                     alt="Andrés Castro"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 {/* Glow effect behind photo */}
