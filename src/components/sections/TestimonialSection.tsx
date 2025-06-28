@@ -39,7 +39,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl lg:text-3xl text-white/90 font-light italic leading-relaxed mb-16 max-w-4xl mx-auto"
             >
-              "Trabajar con Botflowlab fue una experiencia increíble. No solo crearon una página web hermosa, sino que implementaron un sistema completo que nos ayuda a captar y convertir más clientes. Los resultados han superado nuestras expectativas."
+              "La experiencia fue 100% positiva y ágil, especialmente porque mi trabajo es demandante y no podía dedicarle demasiado tiempo de mi día. Me gustó que fuera proactivo y que buscara la oportunidad, que llegó en un buen momento. Recomiendo el proceso y la respuesta a cada consulta para lograrla."
             </motion.blockquote>
 
             {/* Client Info */}
