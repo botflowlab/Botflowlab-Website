@@ -37,7 +37,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl lg:text-2xl text-white/90 font-light italic leading-relaxed mb-16 max-w-5xl mx-auto"
+              className="text-xl md:text-1xl lg:text-2xl text-white/90 font-light italic leading-relaxed mb-16 max-w-5xl mx-auto"
             >
               "La experiencia fue 100% positiva y ágil, especialmente porque mi trabajo es demandante y no podía dedicarle demasiado tiempo de mi día. Me gustó que fuera proactivo y que buscara la oportunidad, que llegó en un buen momento. Recomiendo el proceso y la respuesta a cada consulta para lograrla."
             </motion.blockquote>
