@@ -25,7 +25,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
               className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-16 leading-tight"
               style={{ fontFamily: 'Kumbh Sans' }}
             >
-              <span className="text-white">UN SITIO</span>
+              <span className="text-white">un sitio</span>
               <br />
               <span className="bg-gradient-to-r from-[#DA6040] to-[#eb5633] bg-clip-text text-transparent">
                 DE CLASE MUNDIAL
