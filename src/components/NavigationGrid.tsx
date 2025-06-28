@@ -17,8 +17,8 @@ export const NavigationGrid: React.FC<{ isVisible: boolean }> = ({ isVisible }) 
         {/* <IntroSection isVisible={isVisible} /> */}
         <WhyWebsiteSection isVisible={isVisible} />
         <TestimonialSection isVisible={isVisible} />
-        <HowItWorksSection isVisible={isVisible} />
         <ServicesSection isVisible={isVisible} />
+        <HowItWorksSection isVisible={isVisible} />
         <SuccessCasesSection isVisible={isVisible} />
         <Footer isVisible={isVisible} />
       </div>
