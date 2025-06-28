@@ -3,6 +3,7 @@ import { HeroSection } from './sections/HeroSection';
 import { IntroSection } from './sections/IntroSection';
 import { IntroSeparatorSection } from './sections/IntroSeparatorSection';
 import { WhyWebsiteSection } from './sections/WhyWebsiteSection';
+import { TestimonialSection } from './sections/TestimonialSection';
 import { HowItWorksSection } from './sections/HowItWorksSection';
 import { ServicesSection } from './sections/ServicesSection';
 import { SuccessCasesSection } from './sections/SuccessCasesSection';
@@ -15,6 +16,7 @@ export const NavigationGrid: React.FC<{ isVisible: boolean }> = ({ isVisible }) 
         <HeroSection isVisible={isVisible} />
         {/* <IntroSection isVisible={isVisible} /> */}
         <WhyWebsiteSection isVisible={isVisible} />
+        <TestimonialSection isVisible={isVisible} />
         <HowItWorksSection isVisible={isVisible} />
         <ServicesSection isVisible={isVisible} />
         <SuccessCasesSection isVisible={isVisible} />
