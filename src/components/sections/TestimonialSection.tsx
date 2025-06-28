@@ -68,7 +68,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
                   ANDRÉS CASTRO
                 </h3>
                 <p className="text-white/60 text-sm md:text-base uppercase tracking-wider">
-                  ARQUITECTO & FUNDADOR
+                  ARQUITECTO
                 </p>
               </div>
             </motion.div>
