@@ -53,7 +53,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
               <div className="relative">
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
                   <img
-                    src="https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg"
+                    src="https://i.postimg.cc/sXPYnsFq/Photo-17-9-20-10-28-43-AM.jpg"
                     alt="Andrés Castro"
                     className="w-full h-full object-cover"
                   />
