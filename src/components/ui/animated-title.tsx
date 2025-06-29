@@ -17,21 +17,23 @@ export function AnimatedTitle({ title, className = "" }: AnimatedTitleProps) {
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        duration: 0.2,
+        duration: 0.8,
         ease: "easeOut",
-        staggerChildren: 0.1,
+        staggerChildren: 0.3,
       },
     },
   };
 
-  const wordVariants = {
+  const lineVariants = {
     hidden: {
       opacity: 0,
       filter: "blur(10px)",
+      y: 20,
     },
     visible: {
       opacity: 1,
       filter: "blur(0px)",
+      y: 0,
       transition: {
         duration: 0.8,
         ease: "easeOut",
@@ -51,17 +53,12 @@ export function AnimatedTitle({ title, className = "" }: AnimatedTitleProps) {
         initial="hidden"
         animate="visible"
       >
-        {lines[0].split(" ").map((word, wordIndex) => (
-          <motion.span
-            key={wordIndex}
-            className="relative inline-block mr-4 last:mr-0"
-            variants={wordVariants}
-          >
-            <span className="text-white transition-all duration-300 hover:opacity-90">
-              {word}
-            </span>
-          </motion.span>
-        ))}
+        <motion.span
+          className="relative inline-block text-white transition-all duration-300 hover:opacity-90"
+          variants={lineVariants}
+        >
+          {lines[0]}
+        </motion.span>
       </motion.h1>
 
       {lines[1] && (
@@ -71,10 +68,9 @@ export function AnimatedTitle({ title, className = "" }: AnimatedTitleProps) {
             fontFamily: 'Kumbh Sans, sans-serif',
             letterSpacing: '-0.02em'
           }}
-          variants={wordVariants}
+          variants={lineVariants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 0.5 }}
         >
           <span className="text-[#da6040] transition-all duration-300 hover:opacity-90">
             {lines[1]}
