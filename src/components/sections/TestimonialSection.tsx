@@ -75,6 +75,8 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
           </div>
         </div>
       </div>
+              <IntroSeparatorSection isVisible={isVisible} />
+
     </div>
     
   );
