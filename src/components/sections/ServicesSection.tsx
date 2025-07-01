@@ -9,7 +9,6 @@ export const ServicesSection: React.FC<{ isVisible: boolean }> = ({ isVisible })
       
       <div className="max-w-[1400px] mx-auto px-6 relative">
         <ServicesHeader isVisible={isVisible} />
-
         <div className="relative">
           <PlanetOutline />
           <div className="relative z-10 mt-8">
