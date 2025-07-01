@@ -8,8 +8,6 @@ export const ServicesSection: React.FC<{ isVisible: boolean }> = ({ isVisible })
     <div id="services" className="relative min-h-screen bg-black overflow-hidden py-32">
       
       <div className="max-w-[1400px] mx-auto px-6 relative">
-        <IntroSeparatorSection isVisible={isVisible} />
-
         <ServicesHeader isVisible={isVisible} />
 
         <div className="relative">
