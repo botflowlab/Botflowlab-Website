@@ -79,7 +79,6 @@ export const WhyWebsiteSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
-      <IntroSeparatorSection isVisible={isVisible} />
       
       <div className="relative z-10 flex items-center justify-center py-20">
         <div className="max-w-[1400px] mx-auto px-6">
