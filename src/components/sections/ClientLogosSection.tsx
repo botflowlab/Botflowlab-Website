@@ -72,8 +72,6 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Bottom decorative line */}
       </div>
 
       {/* Floating particles for extra visual appeal */}
