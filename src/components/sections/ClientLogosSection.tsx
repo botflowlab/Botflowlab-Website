@@ -61,7 +61,7 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
               <div className="absolute inset-0 bg-gradient-to-r from-[#DA6040]/20 to-[#eb5633]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl scale-110" />
               
               {/* Logo container */}
-              <div className="relative backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 transition-all duration-500 group-hover:border-white/30 group-hover:bg-white/10">
+              <div className="relative transition-all duration-500 group-hover:border-white/30 group-hover:bg-white/10">
                 <img
                   src={client.logo}
                   alt={client.alt}
