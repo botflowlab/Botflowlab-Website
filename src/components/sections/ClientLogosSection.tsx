@@ -30,18 +30,6 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
       <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900/50 to-black opacity-50" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <p className="text-white/60 text-sm md:text-base uppercase tracking-widest font-mono mb-4">
-            Clientes que confían en nosotros
-          </p>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto" />
-        </motion.div>
 
         {/* Logos Grid */}
         <motion.div
