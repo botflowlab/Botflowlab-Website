@@ -25,7 +25,7 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
   ];
 
   return (
-    <div className="relative bg-black py-16 md:py-20 overflow-hidden">
+    <div className="relative bg-black py-16 md:py-0 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900/50 to-black opacity-50" />
       
