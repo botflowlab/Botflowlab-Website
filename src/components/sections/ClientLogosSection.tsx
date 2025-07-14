@@ -74,12 +74,6 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
         </motion.div>
 
         {/* Bottom decorative line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isVisible ? 1 : 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="w-full max-w-md h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto mt-12 origin-center"
-        />
       </div>
 
       {/* Floating particles for extra visual appeal */}
