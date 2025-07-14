@@ -29,7 +29,7 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900/50 to-black opacity-50" />
       
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
 
         {/* Logos Grid */}
         <motion.div
