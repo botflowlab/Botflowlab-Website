@@ -57,8 +57,6 @@ export const ClientLogosSection: React.FC<ClientLogosProps> = ({ isVisible }) =>
               }}
               className="group relative"
             >
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#DA6040]/20 to-[#eb5633]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl scale-110" />
               
               {/* Logo container */}
               <div className="relative transition-all duration-500">
