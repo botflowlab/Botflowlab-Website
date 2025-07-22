@@ -86,7 +86,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           <span className="text-white block mb-4">
             Obtén una Consultoría Gratis
           </span>
-          <span className="bg-gradient-to-r from-[#DA6040] to-[#eb5633] bg-clip-text text-transparent block">
+          <span className="bg-gradient-to-r from-[#DA6040] to-[#eb5633] bg-clip-text text-transparent">
             para ver qué podemos hacer por tu negocio
           </span>
         </motion.h2>
