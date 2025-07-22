@@ -96,7 +96,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
             transition={{ duration: 0.8 }}
             className="text-center mb-20 max-w-xl mx-auto"
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6" style={{ fontFamily: 'Kumbh Sans' }}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6" style={{ fontFamily: 'Kumbh Sans' }}>
               Nuestro Proceso
             </h2>
             <p className="text-lg md:text-xl text-white/70 max-w-xl">
