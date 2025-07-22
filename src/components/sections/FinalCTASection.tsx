@@ -98,7 +98,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed"
         >
-          En una llamada de 30 minutos analizaremos tu situación actual y te mostraremos 
+          Analizaremos tu situación actual y te mostraremos 
           exactamente cómo podemos ayudarte a crecer online.
         </motion.p>
 
