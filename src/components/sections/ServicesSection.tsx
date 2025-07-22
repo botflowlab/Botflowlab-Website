@@ -5,7 +5,7 @@ import { PlanetOutline } from './services/PlanetOutline';
 
 export const ServicesSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   return (
-    <div id="services" className="relative min-h-screen bg-black overflow-hidden py-8 pt-16">
+    <div id="services" className="relative min-h-screen bg-black overflow-hidden py-8 mt-10">
       
       <div className="max-w-[1400px] mx-auto px-6 relative">
         <ServicesHeader isVisible={isVisible} />
