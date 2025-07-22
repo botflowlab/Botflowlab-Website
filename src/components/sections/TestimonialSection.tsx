@@ -21,7 +21,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-16 leading-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-light mb-16 leading-tight"
               style={{ fontFamily: 'Kumbh Sans' }}
             >
               <span className="text-white">Un Sitio</span>
