@@ -73,7 +73,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
 
         {/* Main Headline */}
         <motion.h2
