@@ -24,9 +24,8 @@ export const ServicesHeader: React.FC<ServicesHeaderProps> = ({ isVisible }) => 
       transition={{ duration: 0.8 }}
       className="text-center relative"
     >
-      <h2 className="text-6xl md:text-7xl font-
-        light mb-4" style={{ fontFamily: 'Kumbh Sans' }}>
-        Servicios.
+      <h2 className="text-6xl md:text-7xl font-light mb-4" style={{ fontFamily: 'Kumbh Sans' }}>
+        Servicios
       </h2>
       
       <motion.p
