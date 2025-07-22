@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { AnimatedServiceButton } from '../ui/AnimatedServiceButton';
+import { JuicyCTAButton } from '../ui/JuicyCTAButton';
 import { useTransition } from '../../context/TransitionContext';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -137,21 +137,11 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           onClick={handleClick}
           className="flex justify-center"
         >
-          <div className="relative group">
-            <AnimatedServiceButton 
-              isVisible={isVisible} 
-              buttonText="SÍ, LA QUIERO" 
-            />
-            
-            {/* Arrow indicator */}
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >
-              <ArrowRight className="w-6 h-6 text-[#DA6040]" />
-            </motion.div>
-          </div>
+          <JuicyCTAButton 
+            isVisible={isVisible} 
+            buttonText="SÍ, LA QUIERO"
+            onClick={handleClick}
+          />
         </motion.div>
       </div>
 
