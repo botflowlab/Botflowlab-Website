@@ -156,7 +156,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
                       </div>
 
                       {/* Title - Single line with proper spacing */}
-                      <h3 className="text-white text-2xl xl:text-3xl font-bold mb-6 leading-tight whitespace-nowrap">
+                      <h3 className="text-white text-2xl xl:text-3xl font-light mb-6 leading-tight whitespace-nowrap">
                         {step.title}
                       </h3>
 
