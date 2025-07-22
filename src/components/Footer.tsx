@@ -40,20 +40,6 @@ export const Footer: React.FC = () => {
         className="bg-black text-white px-8 md:px-24 py-16 border-t border-white/10"
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-2xl font-bold mb-4">Contáctanos</h4>
-            <div className="flex items-center gap-4 text-white/70 text-xl">
-              <a 
-                href="https://www.instagram.com/botflow.lab/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                <FaInstagram />
-              </a>
-            </div>
-          </div>
 
           {/* Address */}
           <div className="text-white/70">
