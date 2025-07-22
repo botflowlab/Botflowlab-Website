@@ -126,7 +126,6 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           className="flex flex-wrap justify-center gap-6 md:gap-8 mb-12 text-sm md:text-base"
         >
           {[
-            "Sin compromiso",
             "Análisis personalizado", 
             "Estrategia clara",
             "Resultados garantizados"
