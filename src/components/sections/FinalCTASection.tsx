@@ -153,19 +153,6 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
             </motion.div>
           </div>
         </motion.div>
-
-        {/* Trust Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isVisible ? 1 : 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-8 text-white/50 text-sm"
-        >
-          <div className="flex items-center justify-center gap-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span>Respuesta en menos de 24 horas</span>
-          </div>
-        </motion.div>
       </div>
 
       {/* Bottom Decorative Line */}
