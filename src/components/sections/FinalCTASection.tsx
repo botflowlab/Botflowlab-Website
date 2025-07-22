@@ -80,13 +80,13 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-8xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight"
           style={{ fontFamily: 'Kumbh Sans' }}
         >
           <span className="text-white block mb-4">
             Obtén una Consultoría Gratis
           </span>
-          <span className="bg-gradient-to-r from-[#DA6040] to-[#eb5633] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#DA6040] to-[#eb5633]">
             para ver qué podemos hacer por tu negocio
           </span>
         </motion.h2>
