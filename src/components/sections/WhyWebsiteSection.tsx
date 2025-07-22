@@ -90,7 +90,7 @@ export const WhyWebsiteSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6" style={{ fontFamily: 'Kumbh Sans' }}>
-              ¿Por qué tener una página web?
+              ¿Por Qué Tener Una Página Web?
             </h2>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
               Solo mira estos datos...
