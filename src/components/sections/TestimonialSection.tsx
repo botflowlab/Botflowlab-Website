@@ -6,7 +6,7 @@ export const TestimonialSection: React.FC<{ isVisible: boolean }> = ({ isVisible
   return (
     <div className="relative bg-black overflow-hidden">
       
-      <div className="relative z-10 flex items-center justify-center py-8">
+      <div className="relative z-10 flex items-center justify-center py-32">
         <div className="max-w-[1200px] mx-auto px-6">
           
           {/* Decorative Corner Elements */}
