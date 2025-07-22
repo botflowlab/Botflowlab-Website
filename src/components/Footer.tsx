@@ -43,10 +43,6 @@ export const Footer: React.FC = () => {
           {/* Contact Info */}
           <div>
             <h4 className="text-2xl font-bold mb-4">Contáctanos</h4>
-            <div className="flex items-center gap-3 text-lg font-semibold mb-6">
-              <FaPhoneAlt className="text-white/80" />
-              <span>(506) 86314745</span>
-            </div>
             <div className="flex items-center gap-4 text-white/70 text-xl">
               <a 
                 href="https://www.instagram.com/botflow.lab/" 
