@@ -46,7 +46,7 @@ export const JuicyCTAButton: React.FC<JuicyCTAButtonProps> = ({
           </motion.div>
           
           {/* Button text */}
-          <span className="text-white text-xl md:text-2xl font-bold tracking-wide">
+          <span className="text-white text-xl md:text-2xl font-light tracking-wide">
             {buttonText}
           </span>
           
