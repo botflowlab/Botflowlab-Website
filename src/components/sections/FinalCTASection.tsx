@@ -135,24 +135,43 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
           transition={{ duration: 0.6, delay: 1 }}
           onClick={handleClick}
-          className="flex justify-center"
+          className="flex justify-center mb-8"
         >
           <div className="relative group">
+            {/* Glowing background effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#DA6040] to-[#eb5633] rounded-lg blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300 scale-110"></div>
+            
+            {/* Pulsing ring effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#DA6040] to-[#eb5633] rounded-lg opacity-20 animate-pulse scale-125"></div>
+            
+            {/* Main button container with enhanced styling */}
+            <div className="relative transform group-hover:scale-105 transition-transform duration-300">
             <AnimatedServiceButton 
               isVisible={isVisible} 
               buttonText="SÍ, LA QUIERO" 
             />
+            </div>
             
             {/* Arrow indicator */}
             <motion.div
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute -right-16 top-1/2 -translate-y-1/2 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
             >
-              <ArrowRight className="w-6 h-6 text-[#DA6040]" />
+              <ArrowRight className="w-8 h-8 text-[#DA6040] drop-shadow-lg" />
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Additional emphasis text */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isVisible ? 0.7 : 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="text-sm text-white/60 font-light"
+        >
+          👆 Haz clic aquí para comenzar
+        </motion.p>
       </div>
 
       {/* Bottom Decorative Line */}
