@@ -140,7 +140,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           <div className="relative group">
             <AnimatedServiceButton 
               isVisible={isVisible} 
-              buttonText="SÍ, YO QUIERO" 
+              buttonText="SÍ, LA QUIERO" 
             />
             
             {/* Arrow indicator */}
