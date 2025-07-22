@@ -74,22 +74,6 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        
-        {/* Decorative Icon */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.5 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-8"
-        >
-          <div className="relative">
-            <div className="w-20 h-20 bg-gradient-to-r from-[#DA6040] to-[#eb5633] rounded-2xl flex items-center justify-center shadow-2xl">
-              <Sparkles className="w-10 h-10 text-white" />
-            </div>
-            {/* Glow effect */}
-            <div className="absolute inset-0 w-20 h-20 bg-gradient-to-r from-[#DA6040] to-[#eb5633] rounded-2xl opacity-30 blur-xl animate-pulse"></div>
-          </div>
-        </motion.div>
 
         {/* Main Headline */}
         <motion.h2
