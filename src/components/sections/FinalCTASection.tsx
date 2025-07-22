@@ -84,7 +84,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ isVisible }) =
           style={{ fontFamily: 'Kumbh Sans' }}
         >
           <span className="text-white block mb-4">
-            Obtén una consultoría gratis
+            Obtén una Consultoría Gratis
           </span>
           <span className="bg-gradient-to-r from-[#DA6040] to-[#eb5633] bg-clip-text text-transparent block">
             para ver qué podemos hacer por tu negocio
