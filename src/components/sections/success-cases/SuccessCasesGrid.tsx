@@ -37,7 +37,7 @@ const successCases = [
 
 export const SuccessCasesGrid: React.FC<SuccessCasesGridProps> = ({ isVisible }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 mt-16">
       {successCases.map((successCase, index) => (
         <motion.div
           key={successCase.id}
