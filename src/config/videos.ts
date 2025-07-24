@@ -13,5 +13,8 @@ export const VIMEO_VIDEOS = {
   },
   box3: {
     id: '1076217285',
+  },
+  successCases: {
+    id: '1076217295', // Using liquidBall video as default - replace with your desired video ID
   }
 };
