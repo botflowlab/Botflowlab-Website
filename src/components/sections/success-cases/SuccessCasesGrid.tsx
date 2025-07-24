@@ -29,9 +29,9 @@ const successCases = [
     id: 3,
     type: 'video',
     videoId: VIMEO_VIDEOS.successCases.id,
-    title: 'PROCESO DE TRABAJO',
-    subtitle: 'Video demostrativo / Metodología',
-    year: '2024',
+    title: 'PRISMA GALLERY',
+    subtitle: 'Landing Page / Mockup',
+    year: '2025',
   },
 ];
 
