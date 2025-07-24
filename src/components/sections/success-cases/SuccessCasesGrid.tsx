@@ -72,15 +72,3 @@ export const SuccessCasesGrid: React.FC<SuccessCasesGridProps> = ({ isVisible })
     </div>
   );
 };
-          <div className="flex justify-between items-center mt-4">
-            <div>
-              <h3 className="text-xl font-bold text-left">{successCase.title}</h3>
-              <p className="text-left text-gray-500 mt-2">{successCase.subtitle}</p>
-            </div>
-            <p className="text-right text-gray-500">{successCase.year}</p>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  );
-};
