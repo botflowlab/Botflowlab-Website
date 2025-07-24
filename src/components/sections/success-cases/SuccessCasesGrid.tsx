@@ -30,7 +30,7 @@ const successCases = [
     type: 'video',
     videoId: VIMEO_VIDEOS.successCases.id,
     title: 'PRISMA GALLERY',
-    subtitle: 'Landing Page / Mockup',
+    subtitle: 'Landing Page / Poryecto de Muestra',
     year: '2025',
   },
 ];
