@@ -29,7 +29,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 2", 
       title: "Plan Personalizado",
-      description: "Te diremos lo que creemos que funcionará mejor para tu negocio y caso particular",
+      description: "Te diremos lo que creemos que funcjkajsdkajs kajsdkajsdk jaskdj aksjd ionará mejor para tu negocio y caso particular",
       icon: <Database className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-emerald-500 to-emerald-600"
