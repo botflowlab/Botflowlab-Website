@@ -12,13 +12,13 @@ export const services: Service[] = [
     id: 'web',
     Icon: LayoutTemplate,
     title: 'DESARROLLO Y DISEÑO WEB',
-    description: 'Desde diseños creativos a soluciones centradas en el usuario.'
+    description: 'Desde diseños creativos a soluciones centradas en el usuario'
   },
   {
     id: 'ia',
     Icon: Workflow,
     title: 'AUTOMATIZACIÓN CON IA',
-    description: 'Chatbots inteligentes, flujos de mensajería, reservas, pagos y sistemas automáticos.'
+    description: 'Chatbots inteligentes, flujos de mensajería, reservas, pagos y sistemas automáticos'
   },
   {
     id: 'redesign',
