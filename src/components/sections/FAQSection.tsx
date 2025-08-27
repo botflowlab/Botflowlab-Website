@@ -17,7 +17,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
   const faqs: FAQItem[] = [
     {
       question: "¿Pueden mostrarme ejemplos de otros negocios como el mío que hayan ayudado?",
-      answer: "Por supuesto. Tenemos casos de éxito en diferentes industrias: arquitectura, consultoría, e-commerce, servicios profesionales y más. Te mostraremos ejemplos específicos de tu sector durante nuestra consulta inicial para que veas exactamente cómo hemos ayudado a negocios similares al tuyo."
+      answer: "Por supuesto. Puedes verlos arriba de esta sección en los casos de éxito"
     },
     {
       question: "¿Qué exactamente van a hacer por mi negocio?",
