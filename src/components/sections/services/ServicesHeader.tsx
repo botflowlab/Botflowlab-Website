@@ -34,7 +34,7 @@ export const ServicesHeader: React.FC<ServicesHeaderProps> = ({ isVisible }) => 
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-xl text-white/70 max-w-2xl mx-auto text-center mb-12"
       >
-        Así te podemos ayudar a creceeeer.
+        Así te podemos ayudar a creceeer.
       </motion.p>
 
       <div onClick={handleClick}>
