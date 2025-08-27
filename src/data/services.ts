@@ -30,6 +30,6 @@ export const services: Service[] = [
     id: 'branding',
     Icon: Briefcase,
     title: 'CREACIÓN DE CONTENIDO',
-    description: 'Pon tu negocio en el spotlight con contenido orgánico'
+    description: 'Pon tu negocio en el spotlight con contenido orgánico en Instagram y Facebook'
   }
 ];
