@@ -21,7 +21,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Qué exactamente van a hacer por mi negocio?",
-      answer: "Creamos tu sitio web completo con diseño profesional, optimización para motores de búsqueda (SEO), sistema de gestión de clientes (CRM), automatización de procesos, y herramientas de conversión. Todo listo para generar leads y ventas desde el primer día. Incluye hosting, mantenimiento y soporte técnico."
+      answer: "Te haremos un sitio web que convierte, atraeremos visitantes y nos aseguraremos de que quien te escriba tenga la intención de comprar"
     },
     {
       question: "¿Cuánto tiempo toma empezar a ver resultados?",
