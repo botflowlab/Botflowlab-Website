@@ -37,7 +37,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 3",
       title: "Nos encargamos de todo",
-      description: "Tanto si quieres una página web, anuncios o contenido, lo creamos todo así tú no tienes que hacerlo",
+      description: "Planeamos el mejor camino de acción y nos encargamos de todo así tú no tienes que hacerlo",
       icon: <LineChart className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-purple-500 to-purple-600"
