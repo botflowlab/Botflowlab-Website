@@ -29,7 +29,7 @@ export const services: Service[] = [
   {
     id: 'branding',
     Icon: Briefcase,
-    title: 'POSICIONAMIENTO / SEO',
+    title: 'CREACIÓN DE CONTENIDO',
     description: 'Destaca en tu industria con estrategias enfocadas en resultados concretos: tráfico, leads y ventas.'
   }
 ];
