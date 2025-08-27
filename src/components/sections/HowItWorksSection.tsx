@@ -45,7 +45,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 4",
       title: "Seguimos los resultados",
-      description: "Analizamos qué está funcionando y hacemos más de eso",
+      description: "Analizamos qué está funcionando y hacemos más de eso, sin mucha teoría - solo resultados",
       icon: <Rocket className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-amber-500 to-amber-600"
