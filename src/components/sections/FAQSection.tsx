@@ -25,7 +25,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Cuánto tiempo toma empezar a ver resultados?",
-      answer: "Tu sitio web estará listo y funcionando en 72 horas. Los primeros leads pueden llegar inmediatamente después del lanzamiento. Para SEO y posicionamiento orgánico, los resultados significativos se ven entre 2-4 meses, pero muchos clientes reportan incremento en consultas desde la primera semana."
+      answer: "La prueba de pago está hecha para darte resultados suficientes para que tomes una decisión informada entre si quieres continuar después de los primeros 30 días"
     },
     {
       question: "¿Cuánto me va a costar esto por adelantado?",
