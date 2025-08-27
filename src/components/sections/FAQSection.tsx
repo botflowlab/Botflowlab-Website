@@ -70,7 +70,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-white/60 text-lg mb-6 font-light tracking-wide"
           >
-            Questions
+            FAQ
           </motion.p>
 
           {/* Main title */}
