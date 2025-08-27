@@ -28,10 +28,6 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
       answer: "La prueba de pago está hecha para darte resultados suficientes para que tomes una decisión informada entre si quieres continuar después de los primeros 30 días"
     },
     {
-      question: "¿Cuánto me va a costar esto por adelantado?",
-      answer: "Ofrecemos diferentes planes según las necesidades de tu negocio. El plan básico incluye sitio web completo, CRM y automatización desde $1,500 USD. Planes más avanzados con funcionalidades adicionales desde $2,500 USD. Te damos una cotización exacta después de entender tus necesidades específicas."
-    },
-    {
       question: "¿Cómo sé que recuperaré mi inversión si no funciona?",
       answer: "Ofrecemos garantía de satisfacción de 30 días. Si no estás completamente satisfecho con los resultados, te devolvemos tu dinero. Además, nuestros clientes típicamente recuperan su inversión en los primeros 2-3 meses a través del incremento en leads y ventas."
     },
