@@ -21,7 +21,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 1",
       title: "Planeamos tu éxito",
-      description: "Identificamos quiénes son tus clientes y qué quieren escuchar antes de empezar.",
+      description: "Identificamos quiénes son tus clientes y qué quieren escuchar antes de empezar",
       icon: <Monitor className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-blue-500 to-blue-600"
