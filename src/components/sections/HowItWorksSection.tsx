@@ -29,7 +29,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 2", 
       title: "Nos encargamos de todo",
-      description: "Conectamos un CRM para que no pierdas ningún lead. Tendrás automatizaciones listas para dar seguimiento, enviar correos, recibir pagos y agendar citas online.",
+      description: "Tanto si quieres una página web, anuncios o contenido, lo creamos todo así no tienes que hacerlo tú",
       icon: <Database className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-emerald-500 to-emerald-600"
