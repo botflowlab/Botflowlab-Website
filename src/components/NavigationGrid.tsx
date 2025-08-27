@@ -9,6 +9,7 @@ import { HowItWorksSection } from './sections/HowItWorksSection';
 import { ServicesSection } from './sections/ServicesSection';
 import { SuccessCasesSection } from './sections/SuccessCasesSection';
 import { FinalCTASection } from './sections/FinalCTASection';
+import { FAQSection } from './sections/FAQSection';
 import { Footer } from './Footer';
 
 export const NavigationGrid: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
@@ -23,6 +24,7 @@ export const NavigationGrid: React.FC<{ isVisible: boolean }> = ({ isVisible }) 
         <ServicesSection isVisible={isVisible} />
         <HowItWorksSection isVisible={isVisible} />
         <SuccessCasesSection isVisible={isVisible} />
+        <FAQSection isVisible={isVisible} />
         <FinalCTASection isVisible={isVisible} />
         <Footer isVisible={isVisible} />
       </div>
