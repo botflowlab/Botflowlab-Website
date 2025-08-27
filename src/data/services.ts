@@ -23,8 +23,8 @@ export const services: Service[] = [
   {
     id: 'redesign',
     Icon: RefreshCcw,
-    title: 'REDISEÑO ESTRATÉGICO',
-    description: 'Actualizamos tu sitio para que alcance su potencial en diseño, velocidad y conversión.'
+    title: 'GOOGLE/IG/FB ADS',
+    description: 'Aparece justo donde y cuando clientes locales buscan lo que ofreces'
   },
   {
     id: 'branding',
