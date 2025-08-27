@@ -36,7 +36,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     },
     {
       step: "PASO 3",
-      title: "Captura y seguimiento de leads",
+      title: "Nos encargamos de todo",
       description: "El sistema integrado no solo recopila datos, también los activa. Cada lead que entra desde formularios o suscripciones se guarda automáticamente y comienza una secuencia de seguimiento automatizado. No se trata solo de capturar, sino de mantener el contacto, aportar valor y avanzar la conversación.",
       icon: <LineChart className="w-8 h-8" />,
       color: "#F59E0B",
