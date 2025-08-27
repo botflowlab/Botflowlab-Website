@@ -29,7 +29,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 2", 
       title: "Nos encargamos de todo",
-      description: "Tanto si quieres una página web, anuncios o contenido, lo creamos todo así tú no tienes que hacerlo",
+      description: "",
       icon: <Database className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-emerald-500 to-emerald-600"
@@ -37,7 +37,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 3",
       title: "Nos encargamos de todo",
-      description: "El sistema integrado no solo recopila datos, también los activa. Cada lead que entra desde formularios o suscripciones se guarda automáticamente y comienza una secuencia de seguimiento automatizado. No se trata solo de capturar, sino de mantener el contacto, aportar valor y avanzar la conversación.",
+      description: "Tanto si quieres una página web, anuncios o contenido, lo creamos todo así tú no tienes que hacerlo",
       icon: <LineChart className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-purple-500 to-purple-600"
