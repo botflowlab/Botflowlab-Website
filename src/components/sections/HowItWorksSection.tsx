@@ -20,7 +20,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
   const steps: ProcessStep[] = [
     {
       step: "PASO 1",
-      title: "Planeamos tu Éxito",
+      title: "Planeamos tu éxito",
       description: "Identificamos quiénes son tus clientes y qué quieren escuchar antes de empezar",
       icon: <Monitor className="w-8 h-8" />,
       color: "#F59E0B",
@@ -28,7 +28,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     },
     {
       step: "PASO 2", 
-      title: "Plan Personalizado",
+      title: "Plan personalizado",
       description: "Te diremos lo que creemos que funcionará mejor para tu negocio y caso particular",
       icon: <Database className="w-8 h-8" />,
       color: "#F59E0B",
