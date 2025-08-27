@@ -30,6 +30,6 @@ export const services: Service[] = [
     id: 'branding',
     Icon: Briefcase,
     title: 'CREACIÓN DE CONTENIDO',
-    description: 'Destaca en tu industria con estrategias enfocadas en resultados concretos: tráfico, leads y ventas.'
+    description: 'Pon tu negocio en el spotlight con contenido orgánico'
   }
 ];
