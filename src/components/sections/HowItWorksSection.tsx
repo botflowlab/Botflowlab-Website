@@ -29,7 +29,7 @@ export const HowItWorksSection: React.FC<{ isVisible: boolean }> = ({ isVisible 
     {
       step: "PASO 2", 
       title: "Nos encargamos de todo",
-      description: "Tanto si quieres una página web, anuncios o contenido, lo creamos todo así no tienes que hacerlo tú",
+      description: "Tanto si quieres una página web, anuncios o contenido, lo creamos todo así tú no tienes que hacerlo",
       icon: <Database className="w-8 h-8" />,
       color: "#F59E0B",
       gradient: "from-emerald-500 to-emerald-600"
