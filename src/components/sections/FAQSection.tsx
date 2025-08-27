@@ -81,9 +81,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
             className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight"
             style={{ fontFamily: 'Kumbh Sans' }}
           >
-            <span className="text-white block mb-2">Frequently</span>
-            <span className="text-white block mb-2">Asked </span>
-            <span className="text-white italic font-light">Questions</span>
+            <span className="text-white block mb-2">Preguntas</span>
+            <span className="text-white block mb-2">Frecuentes</span>
           </motion.h2>
         </motion.div>
 
