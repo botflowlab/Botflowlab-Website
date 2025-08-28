@@ -42,6 +42,10 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     {
       question: "¿Qué pasa si esto no funciona para mi tipo de negocio?",
       answer: "Antes de comenzar nos aseguramos de saber que podemos ayudarte. Tenemos 0 interés en hacer reembolsos y darnos una mala imagen"
+    },
+    {
+      question: "¿Qué pasa si quiero cancelar?",
+      answer: "Antes de comenzar nos aseguramos de saber que podemos ayudarte. Tenemos 0 interés en hacer reembolsos y darnos una mala imagen"
     }
   ];
 
