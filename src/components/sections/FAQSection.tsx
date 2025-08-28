@@ -37,7 +37,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Necesito aprender algo técnico?",
-      answer: "Para nada. Diseñamos todo para que sea súper fácil de usar. Te damos una capacitación de 30 minutos sobre cómo actualizar contenido básico, pero el sistema es tan intuitivo que cualquiera puede usarlo. Para todo lo técnico, nosotros nos encargamos completamente."
+      answer: "No, no tienes que hacer absolutamente NADA técnico."
     },
     {
       question: "¿Qué pasa si esto no funciona para mi tipo de negocio?",
