@@ -33,6 +33,14 @@ const successCases = [
     subtitle: 'Landing Page / Poryecto de muestra',
     year: '2025',
   },
+  {
+    id: 3,
+    type: 'video',
+    videoId: VIMEO_VIDEOS.successCases.id,
+    title: 'PRISMA GALLERY',
+    subtitle: 'Landing Page / Poryecto de muestra',
+    year: '2024-2025',
+  },
 ];
 
 export const SuccessCasesGrid: React.FC<SuccessCasesGridProps> = ({ isVisible }) => {
