@@ -17,43 +17,43 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
   const faqs: FAQItem[] = [
     {
       question: "¿Pueden mostrarme ejemplos de otros negocios como el mío que hayan ayudado?",
-      answer: "Por supuesto. Puedes verlos arriba de esta sección en los casos de éxito"
+      answer: "Por supuesto. Puedes verlos arriba de esta sección en los casos de éxito."
     },
     {
       question: "¿Qué exactamente van a hacer por mi negocio?",
-      answer: "Te haremos un sitio web que convierte, atraeremos visitantes y nos aseguraremos de que quien te escriba tenga la intención de comprar"
+      answer: "Te haremos un sitio web que convierte, atraeremos visitantes y nos aseguraremos de que quien te escriba tenga la intención de comprar."
     },
     {
       question: "¿Cuánto tiempo toma empezar a ver resultados?",
-      answer: "La prueba de pago está hecha para darte resultados suficientes para que tomes una decisión informada entre si quieres continuar después de los primeros 30 días"
+      answer: "La prueba de pago está hecha para darte resultados suficientes para que tomes una decisión informada entre si quieres continuar después de los primeros 30 días."
     },
     {
       question: "¿Cómo sé que recuperaré mi inversión si no funciona?",
-      answer: "No estamos muy interesados en meternos en problemas legales y ser bloqueados por el banco. Así que si quieres tu dinero de vuelta, solo mándanos un mensaje"
+      answer: "No estamos muy interesados en meternos en problemas legales y ser bloqueados por el banco. Así que si quieres tu dinero de vuelta, solo mándanos un mensaje."
     },
     {
       question: "¿Cuánto de mi tiempo va a requerir esto?",
-      answer: "Casi nada. Solo tienes que hacer lo que haces mejor: vender tu producto o servicio"
+      answer: "Casi nada. Solo tienes que hacer lo que haces mejor: vender tu producto o servicio."
     },
     {
       question: "¿Necesito aprender algo técnico?",
-      answer: "No, no tienes que hacer absolutamente NADA técnico"
+      answer: "No, no tienes que hacer absolutamente NADA técnico."
     },
     {
       question: "¿Qué pasa si esto no funciona para mi tipo de negocio?",
-      answer: "Antes de comenzar nos aseguramos de saber que podemos ayudarte. Tenemos 0 interés en hacer reembolsos y darnos una mala imagen"
+      answer: "Antes de comenzar nos aseguramos de saber que podemos ayudarte. Tenemos 0 interés en hacer reembolsos y darnos una mala imagen."
     },
     {
       question: "¿Qué pasa si quiero cancelar?",
-      answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día"
+      answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día."
     },
     {
       question: "¿Puedo pensarlo y escribirles luego?",
-      answer: "Mejor llena el formulario y así por lo menos sabemos que tienes interés. En el mejor caso te enviaremos nuestro mejor material para que sepas cómo es trabajar con nosotros"
+      answer: "Mejor llena el formulario y así por lo menos sabemos que tienes interés. En el mejor caso te enviaremos nuestro mejor material para que sepas cómo es trabajar con nosotros."
     },
     {
       question: "¿Debería hablar con mi pareja primero?",
-      answer: "Vamos, solo llena el formulario"
+      answer: "Vamos, solo llena el formulario."
     },
   ];
 
