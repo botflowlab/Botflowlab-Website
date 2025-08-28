@@ -38,7 +38,7 @@ const successCases = [
     type: 'video',
     videoId: VIMEO_VIDEOS.successCases.id,
     title: 'MARIANO TREJO',
-    subtitle: 'Landing Page / Poryecto de muestra',
+    subtitle: 'Edición de video - YouTube',
     year: '2024-2025',
   },
 ];
