@@ -49,7 +49,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Puedo pensarlo y escribirles luego?",
-      answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día"
+      answer: "Mejor llena el formulario y así por lo menos sabemos que tienes interés. En el mejor caso te enviaremos nuestro mejor material para que sepas cómo es trabajar con nosotros"
     },
   ];
 
