@@ -18,6 +18,14 @@ const successCases = [
     year: '2024',
   },
   {
+    id: 2,
+    image: 'https://i.postimg.cc/fTycPQBm/Mariano-Trejo-Fondo.png',
+    overlay: 'https://i.postimg.cc/65PrJbmS/Mariano01.webp',
+    title: 'MARIANO TREJO',
+    subtitle: 'Edición de video - YouTube',
+    year: '2024-2025',
+  },
+  {
     id: 3,
     image: 'https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg',
     overlay: '',
@@ -33,14 +41,7 @@ const successCases = [
     subtitle: 'Landing Page / Poryecto de muestra',
     year: '2025',
   },
-  {
-    id: 2,
-    image: 'https://i.postimg.cc/fTycPQBm/Mariano-Trejo-Fondo.png',
-    overlay: 'https://i.postimg.cc/65PrJbmS/Mariano01.webp',
-    title: 'MARIANO TREJO',
-    subtitle: 'Edición de video - YouTube',
-    year: '2024-2025',
-  },
+  
 ];
 
 export const SuccessCasesGrid: React.FC<SuccessCasesGridProps> = ({ isVisible }) => {
