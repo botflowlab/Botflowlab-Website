@@ -18,7 +18,7 @@ const successCases = [
     year: '2024',
   },
   {
-    id: 2,
+    id: 3,
     image: 'https://i.postimg.cc/8ztQDY7x/Xnip2025-06-23-21-22-08.jpg',
     overlay: '',
     title: 'ANDRÉS CASTRO ARQUITECTURA',
@@ -26,7 +26,7 @@ const successCases = [
     year: '2025',
   },
   {
-    id: 3,
+    id: 4,
     type: 'video',
     videoId: VIMEO_VIDEOS.successCases.id,
     title: 'PRISMA GALLERY',
@@ -34,7 +34,7 @@ const successCases = [
     year: '2025',
   },
   {
-    id: 4,
+    id: 2,
     image: 'https://i.postimg.cc/fTycPQBm/Mariano-Trejo-Fondo.png',
     overlay: 'https://i.postimg.cc/65PrJbmS/Mariano01.webp',
     title: 'MARIANO TREJO',
