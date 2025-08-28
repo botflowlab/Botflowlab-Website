@@ -29,7 +29,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Cómo sé que recuperaré mi inversión si no funciona?",
-      answer: "Ofrecemos garantía de satisfacción de 30 días. Si no estás completamente satisfecho con los resultados, te devolvemos tu dinero. Además, nuestros clientes típicamente recuperan su inversión en los primeros 2-3 meses a través del incremento en leads y ventas."
+      answer: "No estamos muy interesados en meternos en problemas legales y ser bloqueados por el banco. Así que si quieres tu dinero de vuelta, solo mándanos un mensaje"
     },
     {
       question: "¿Cuánto de mi tiempo va a requerir esto?",
