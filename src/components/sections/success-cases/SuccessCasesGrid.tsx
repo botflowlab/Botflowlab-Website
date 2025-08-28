@@ -37,7 +37,7 @@ const successCases = [
     id: 3,
     type: 'video',
     videoId: VIMEO_VIDEOS.successCases.id,
-    title: 'PRISMA GALLERY',
+    title: 'MARIANO TREJO',
     subtitle: 'Landing Page / Poryecto de muestra',
     year: '2024-2025',
   },
