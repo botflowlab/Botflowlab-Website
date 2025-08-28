@@ -45,7 +45,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Qué pasa si quiero cancelar?",
-      answer: "Antes de comenzar nos aseguramos de saber que podemos ayudarte. Tenemos 0 interés en hacer reembolsos y darnos una mala imagen"
+      answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día"
     }
   ];
 
