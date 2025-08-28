@@ -20,7 +20,7 @@ const successCases = [
   {
     id: 2,
     image: 'https://i.postimg.cc/fTycPQBm/Mariano-Trejo-Fondo.png',
-    overlay: 'https://i.postimg.cc/65PrJbmS/Mariano01.webp',
+    overlay: 'https://i.postimg.cc/1txSkSGt/Mariano-Testimonio.png',
     title: 'MARIANO TREJO',
     subtitle: 'Edición de video - YouTube',
     year: '2024-2025',
