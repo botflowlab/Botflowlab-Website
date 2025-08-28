@@ -46,7 +46,11 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     {
       question: "¿Qué pasa si quiero cancelar?",
       answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día"
-    }
+    },
+    {
+      question: "¿Puedo pensarlo y escribirles luego?",
+      answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día"
+    },
   ];
 
   const toggleFAQ = (index: number) => {
