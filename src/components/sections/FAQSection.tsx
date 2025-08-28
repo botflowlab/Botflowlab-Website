@@ -53,7 +53,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Debería hablar con mi pareja primero?",
-      answer: "Solo envíanos un mensaje y nos aseguraremos de manejarlo el mismo día"
+      answer: "Vamos, solo llena el formulario"
     },
   ];
 
