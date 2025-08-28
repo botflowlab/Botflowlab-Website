@@ -41,7 +41,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Qué pasa si esto no funciona para mi tipo de negocio?",
-      answer: "Hemos trabajado exitosamente con más de 50 tipos de negocios diferentes. Antes de empezar, hacemos un análisis completo de tu industria y competencia para asegurar que nuestra estrategia funcione específicamente para tu sector. Si por alguna razón no vemos resultados, aplicamos nuestra garantía de devolución."
+      answer: "Antes de comenzar nos aseguramos de saber que podemos ayudarte. Tenemos 0 interés en hacer reembolsos y darnos una mala imagen"
     }
   ];
 
