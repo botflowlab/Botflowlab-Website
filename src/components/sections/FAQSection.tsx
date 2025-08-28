@@ -37,7 +37,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Necesito aprender algo técnico?",
-      answer: "No, no tienes que hacer absolutamente NADA técnico."
+      answer: "No, no tienes que hacer absolutamente NADA técnico"
     },
     {
       question: "¿Qué pasa si esto no funciona para mi tipo de negocio?",
