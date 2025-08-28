@@ -34,9 +34,9 @@ const successCases = [
     year: '2025',
   },
   {
-    id: 3,
-    type: 'video',
-    videoId: VIMEO_VIDEOS.successCases.id,
+    id: 4,
+    image: 'https://i.postimg.cc/fTycPQBm/Mariano-Trejo-Fondo.png',
+    overlay: 'https://i.postimg.cc/65PrJbmS/Mariano01.webp',
     title: 'MARIANO TREJO',
     subtitle: 'Edición de video - YouTube',
     year: '2024-2025',
