@@ -33,7 +33,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ isVisible }) => {
     },
     {
       question: "¿Cuánto de mi tiempo va a requerir esto?",
-      answer: "Mínimo. Solo necesitamos 2-3 horas de tu tiempo total: una sesión inicial de 1 hora para entender tu negocio, 30 minutos para revisar el diseño, y 30 minutos para la capacitación final. Nosotros nos encargamos de todo el trabajo técnico mientras tú te enfocas en tu negocio."
+      answer: "Casi nada. Solo tienes que hacer lo que haces mejor: vender tu producto o servicio"
     },
     {
       question: "¿Necesito aprender algo técnico?",
