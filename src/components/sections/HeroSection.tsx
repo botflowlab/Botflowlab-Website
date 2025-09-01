@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   return (
-    <div id='hero' className="relative min-h-screen w-full overflow-hidden bg-[#EFEBE6]">
+    <div id='hero' className="relative min-h-screen w-full overflow-hidden bg-black">
       
       {/* Stars animation layer */}
       <div className="absolute inset-0 z-4">
@@ -23,13 +23,13 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
         className="absolute inset-0 z-[2] bg-[url('https://i.postimg.cc/cLzsHZSf/bghero.png')] bg-no-repeat bg-[position:bottom_center] bg-contain opacity-60"
       >
         {/* Overlay negro */}
-
+        <div className="absolute inset-0 bg-black opacity-50 z-[3] pointer-events-none" />
       </motion.div>
 
       
       
       {/* Gradient overlay */}
-
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-black/25 via-black/15 to-black z-10"></div>
       
       {/* Content layer */}
       <div className="relative z-20 flex min-h-screen flex-col items-center justify-center px-4 text-center">
