@@ -29,7 +29,7 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
       
       
       {/* Gradient overlay */}
-      <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-black/25 via-black/15 to-black z-10"></div>
+
       
       {/* Content layer */}
       <div className="relative z-20 flex min-h-screen flex-col items-center justify-center px-4 text-center">
