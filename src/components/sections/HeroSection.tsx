@@ -23,7 +23,7 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
         className="absolute inset-0 z-[2] bg-[url('https://i.postimg.cc/cLzsHZSf/bghero.png')] bg-no-repeat bg-[position:bottom_center] bg-contain opacity-60"
       >
         {/* Overlay negro */}
-        <div className="absolute inset-0 bg-black opacity-50 z-[3] pointer-events-none" />
+
       </motion.div>
 
       
