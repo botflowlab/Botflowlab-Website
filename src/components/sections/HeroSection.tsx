@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   return (
-    <div id='hero' className="relative min-h-screen w-full overflow-hidden bg-black">
+    <div id='hero' className="relative min-h-screen w-full overflow-hidden bg-[#EFEBE6]">
       
       {/* Stars animation layer */}
       <div className="absolute inset-0 z-4">
