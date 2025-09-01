@@ -15,16 +15,16 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
         <StarsAnimation />
       </div> 
       
-      {/* Background image */}
+      {/* Background image 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.8, ease: 'easeOut', delay: 0.3 }}
         className="absolute inset-0 z-[2] bg-[url('https://i.postimg.cc/cLzsHZSf/bghero.png')] bg-no-repeat bg-[position:bottom_center] bg-contain opacity-60"
       >
-        {/* Overlay negro */}
+  
         <div className="absolute inset-0 bg-black opacity-50 z-[3] pointer-events-none" />
-      </motion.div>
+      </motion.div> */}
 
       
       
