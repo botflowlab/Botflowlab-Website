@@ -6,7 +6,8 @@ interface AnimatedTitleProps {
 }
 
 export function AnimatedTitle({ title, className = "" }: AnimatedTitleProps) {
-  const lines = title.split(" | ");
+  // Split title into words for individual animation
+  const words = title.split(" ");
 
   const titleVariants = {
     hidden: {
@@ -17,14 +18,14 @@ export function AnimatedTitle({ title, className = "" }: AnimatedTitleProps) {
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        duration: 0.8,
+        duration: 1.2,
         ease: "easeOut",
-        staggerChildren: 0.3,
+        staggerChildren: 0.1,
       },
     },
   };
 
-  const lineVariants = {
+  const wordVariants = {
     hidden: {
       opacity: 0,
       filter: "blur(10px)",
@@ -35,48 +36,34 @@ export function AnimatedTitle({ title, className = "" }: AnimatedTitleProps) {
       filter: "blur(0px)",
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center gap-16 ${className}`}>
+    <div className={`flex flex-col items-center justify-center ${className}`}>
       <motion.h1 
-        className="text-6xl sm:text-7xl md:text-[7.5rem] font-extrabold tracking-tight text-center leading-none"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-center leading-tight max-w-5xl"
         style={{ 
           fontFamily: 'Kumbh Sans, sans-serif',
-          letterSpacing: '-0.04em'
+          letterSpacing: '-0.02em'
         }}
         variants={titleVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.span
-          className="relative inline-block text-white transition-all duration-300 hover:opacity-90"
-          variants={lineVariants}
-        >
-          {lines[0]}
-        </motion.span>
+        {words.map((word, index) => (
+          <motion.span
+            key={index}
+            className="inline-block text-white mr-4"
+            variants={wordVariants}
+          >
+            {word}
+          </motion.span>
+        ))}
       </motion.h1>
-
-      {lines[1] && (
-        <motion.div 
-          className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide text-center"
-          style={{ 
-            fontFamily: 'Kumbh Sans, sans-serif',
-            letterSpacing: '-0.02em'
-          }}
-          variants={lineVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <span className="text-[#da6040] transition-all duration-300 hover:opacity-90">
-            {lines[1]}
-          </span>
-        </motion.div>
-      )}
     </div>
   );
 }
