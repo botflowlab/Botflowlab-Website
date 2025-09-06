@@ -1,5 +1,4 @@
 import React from 'react';
-import { AnimatedTitle } from '../ui/animated-title';
 import { TrackingButton } from '../ui/TrackingButton';
 import ScrollIndicator from '../ui/ScrollIndicator';
 import { StarsAnimation } from '../ui/StarsAnimation';
@@ -7,6 +6,41 @@ import { motion } from 'framer-motion';
 
 
 export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+      filter: "blur(10px)",
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 1.2,
+        ease: "easeOut",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: {
+      opacity: 0,
+      filter: "blur(10px)",
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const words = "Lanzamos tu sitio web listo para vender".split(" ");
+
   return (
     <div id='hero' className="relative min-h-screen w-full overflow-hidden bg-black">
       
@@ -43,7 +77,26 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
             </div>
           </div>
           
-          <AnimatedTitle title="Lanzamos tu sitio web listo para vender" />
+          <motion.h1 
+            className="text-6xl sm:text-7xl md:text-[7.5rem] font-extrabold tracking-tight text-center leading-none text-white max-w-6xl mx-auto mb-8"
+            style={{ 
+              fontFamily: 'Kumbh Sans, sans-serif',
+              letterSpacing: '-0.04em'
+            }}
+            variants={titleVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {words.map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block mr-4 md:mr-6"
+                variants={wordVariants}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.h1>
           
           <div className="mt-16">
             <TrackingButton />
