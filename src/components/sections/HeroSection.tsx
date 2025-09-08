@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
   const titleVariants = {
     hidden: {
-      opacity: 0,
+      opacity: 0.01,
       filter: "blur(10px)",
     },
     visible: {
@@ -24,7 +24,7 @@ export const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => 
 
   const wordVariants = {
     hidden: {
-      opacity: 0,
+      opacity: 0.01,
       filter: "blur(10px)",
       y: 20,
     },
